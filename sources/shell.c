@@ -61,7 +61,7 @@ char    *ft_prompt(void)
     ale[2] = ft_strjoin(ale[0], ale[1]);
     free(ale[0]);
     free(ale[1]);
-    ale[0] = ft_strjoin(ale[2], " \u276f");
+    ale[0] = ft_strjoin(ale[2], " \u276f ");
     free(ale[2]);
     return (ale[0]);
 }
