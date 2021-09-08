@@ -24,7 +24,7 @@ static char    *ft_reconstruct(char *line)
     i = -1;
     state = 3;
     line = ft_strtrim(line, "\n");
-    if (line[0] == ';' && printf("%s`%c'\n", "Error: syntax\n", ';'))
+    if (line[0] == ';' && printf("%s`%c'\n", RED"Error: syntax ", ';'))
         return (0);
     new = ft_calloc(ft_strlen(line) + 1, sizeof(char));
     while (line[++i])
@@ -54,10 +54,10 @@ char    *ft_prompt(void)
     else
         dir = pdir;
     if (!(errno == 0))
-        ale[0] = ft_strjoin("\U0001F61F", user);
+        ale[0] = ft_strjoin("\U0001F61F" GRN, user);
     else
-        ale[0] = ft_strjoin("\U0001F642", user);
-    ale[1] = ft_strjoin(" in \U0001F4C2", ++dir);
+        ale[0] = ft_strjoin("\U0001F642" GRN, user);
+    ale[1] = ft_strjoin(" in \U0001F4C2" GRN, ++dir);
     ale[2] = ft_strjoin(ale[0], ale[1]);
     free(ale[0]);
     free(ale[1]);
@@ -78,7 +78,7 @@ char    *ft_get_line(void)
     ale = readline(prompt);
     if (!ale)
     {
-        printf("Error: exit\n");
+        printf("%s\nExit\n", RED);
         exit(0);
     }
     errno = ale2;

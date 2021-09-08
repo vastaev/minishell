@@ -7,8 +7,7 @@ I =	includes/
 
 O = objects/
 
-SRC =  $Smain.c $Sshell.c $S$Lfunction.c $S$Lfunction2.c
-
+SRC =  $Smain.c $Sshell.c $S$Lfunction.c $S$Lfunction2.c $Spp.c
 OBJS = $(SRCS:$S%.c=$O%.o)
 
 RED			=	\033[1;31m

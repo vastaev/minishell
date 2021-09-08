@@ -1,4 +1,11 @@
 #include "../includes/mini.h"
+t_shell	g_sh;
+
+static void	signals(void)
+{
+	signal(SIGINT, sig_main);
+	signal(SIGQUIT, SIG_IGN);
+}
 
 int main(int arg, char **argv, char **envp)
 {
@@ -8,6 +15,7 @@ int main(int arg, char **argv, char **envp)
 
     while (21)
     {
+        signals();
         line = ft_get_line();
         if (!line)
             continue ;
@@ -16,6 +24,7 @@ int main(int arg, char **argv, char **envp)
         while (tabs[++i])
         {
             errno = 0;
+            init_fds();
         }
     }
     return (0);

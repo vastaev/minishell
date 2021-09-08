@@ -15,6 +15,17 @@
 # include <term.h>
 # include <signal.h>
 
+# define GRN "\001\e[0;32m\002"
+# define RED "\001\e[0;31m\002"
+# define WHT "\001\e[0m\002"
+
+typedef struct s_shell
+{
+    int fd[2];
+}   t_shell;
+
+extern t_shell  g_sh;
+
 // libfun -------------------------------------------------------------
 int	            ft_strlcpy(char *dst, const char *src, size_t dstsize);
 unsigned int	ft_strlen(char const *str);
@@ -27,5 +38,8 @@ void	        *ft_calloc(size_t count, size_t size);
 // shellfun -----------------------------------------------------------
 char            *ft_get_line(void);
 char            *ft_prompt(void);
+void            sig_main(int sig);
+void	        init_fds(void);
+void	        ft_error(int errornum, char *errormsg, int bye);
 // --------------------------------------------------------------------
 #endif
