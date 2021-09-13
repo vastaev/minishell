@@ -58,6 +58,13 @@ typedef struct s_cmdito
 	struct s_cmdito	*next;
 }					t_cmdito;
 
+typedef struct s_env
+{
+    char *name;
+    char *value;
+    struct s_env *next;
+} t_env;
+
 typedef struct s_shell
 {
     t_cmdito *cmd;
