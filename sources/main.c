@@ -1,4 +1,5 @@
 #include "mini.h"
+
 t_shell	g_sh;
 
 static void init_shell(void)
@@ -34,6 +35,7 @@ int main(int arg, char **argv, char **envp)
             errno = 0;
             init_fds();
         }
+        // ft_freemain(tabs, line);
     }
     return (0);
 }

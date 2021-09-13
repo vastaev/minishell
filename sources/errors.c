@@ -17,7 +17,7 @@ static int	check_sec(t_token *tmp)
 	return (1);
 }
 
-int	check_syntax(const t_lexer *lex)
+int	check_syn(const t_lexer *lex)
 {
 	t_token	*tmp;
 

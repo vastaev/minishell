@@ -24,6 +24,13 @@
 # define RED "\001\e[0;31m\002"
 # define WHT "\001\e[0m\002"
 
+typedef struct s_token
+{
+	char			*data;
+	int				tkn;
+	struct s_token	*next;
+}	t_token;
+
 typedef struct s_lex
 {
     char	*s;
@@ -32,14 +39,6 @@ typedef struct s_lex
 	int		state;
 	int		cb;
 }   t_lexer;
-
-typedef struct s_token
-{
-	char			*data;
-	int				tkn;
-	struct s_token	*next;
-}	t_token;
-
 typedef struct s_io
 {
 	char		*name;
@@ -67,6 +66,7 @@ typedef struct s_env
 
 typedef struct s_shell
 {
+    t_env   *env;
     t_cmdito *cmd;
     int fd[2];
     int nproc;
@@ -90,15 +90,34 @@ char	        *ft_itoa(int s);
 int	            ft_isalpha(int c);
 int	            ft_isdigit(int c);
 int	            ft_isalnum(int c);
+char	        *ft_strchr(char *s, int c);
+char	        *ft_substr(char const *s, unsigned int start, size_t len);
 // --------------------------------------------------------------------
 // shellfun -----------------------------------------------------------
 char            *ft_get_line(void);
 char            *ft_prompt(void);
 void            sig_main(int sig);
 void	        init_fds(void);
-void	        ft_error(int errornum, char *errormsg, int bye);
+char            *ft_getenv(char *name);
 // --------------------------------------------------------------------
 // parserfun-----------------------------------------------------------
 int             lex_pars(char *str);
+t_cmdito	    *init_cmd(void);
+void	        add_cmd(t_cmdito **lst, t_cmdito *add);
+void	        add_redir(t_io **lst, t_io *new);
+void            read_heredoc(t_cmdito **cmd, char *del);
+char	        *get_val(char *str, int i, int ret);
+int             get_len(char *str, int i);
+// --------------------------------------------------------------------
+// errorsfun-----------------------------------------------------------
+int	            check_syntax(const t_lexer *lex);
+void	        ft_errormsg(char *errormsg);
+void	        ft_error(int errornum, char *errormsg, int bye);
+// --------------------------------------------------------------------
+// freefun-------------------------------------------------------------
+void	        ft_freecmd(t_cmdito *cmd);
+void	        ft_freelex(t_token **lst, int flag);
+void	        ft_freeio(t_io **lst);
+void	        ft_freemain(char **tabs, char *line);
 // --------------------------------------------------------------------
 #endif
