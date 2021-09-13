@@ -1,5 +1,11 @@
-#include "../includes/mini.h"
+#include "mini.h"
 t_shell	g_sh;
+
+static void init_shell(void)
+{
+    dup2(STDIN_FILENO, g_sh.fd[0]);
+    dup2(STDOUT_FILENO, g_sh.fd[1]);
+}
 
 static void	signals(void)
 {
@@ -12,9 +18,11 @@ int main(int arg, char **argv, char **envp)
     char *line;
     char **tabs;
     int i;
-
+    init_shell();
     while (21)
     {
+        if (!lex_pars(tabs[i]))
+            continue ;
         signals();
         line = ft_get_line();
         if (!line)
