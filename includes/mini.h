@@ -39,6 +39,7 @@ typedef struct s_lex
 	int		state;
 	int		cb;
 }   t_lexer;
+
 typedef struct s_io
 {
 	char		*name;
@@ -61,6 +62,7 @@ typedef struct s_env
 {
     char *name;
     char *value;
+	int def;
     struct s_env *next;
 } t_env;
 
@@ -92,13 +94,15 @@ int	            ft_isdigit(int c);
 int	            ft_isalnum(int c);
 char	        *ft_strchr(char *s, int c);
 char	        *ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_strchjoin(char *str, char c);
 // --------------------------------------------------------------------
 // shellfun -----------------------------------------------------------
-char            *ft_get_line(void);
+int				get_next_line(int fd, char **line);
 char            *ft_prompt(void);
 void            sig_main(int sig);
 void	        init_fds(void);
 char            *ft_getenv(char *name);
+char    		*ft_get_line(void);
 // --------------------------------------------------------------------
 // parserfun-----------------------------------------------------------
 int             lex_pars(char *str);
@@ -108,9 +112,23 @@ void	        add_redir(t_io **lst, t_io *new);
 void            read_heredoc(t_cmdito **cmd, char *del);
 char	        *get_val(char *str, int i, int ret);
 int             get_len(char *str, int i);
+t_io			*new_io(char *name, int is_app, int is_out);
+// --------------------------------------------------------------------
+// lexerfun------------------------------------------------------------
+void			nrml_state(int *i, t_token **tok, t_lexer **lex);
+void			double_quotes(int *i, t_token **tok, t_lexer **lex);
+void			simple_quotes(char c, t_token **tok, t_lexer **lex);
+int				lexer(char *s, t_lexer **lex);
+int				get_type(char c);
+void			deal_char(t_token *tok, char c, int nstat, t_lexer **lex);
+void			new_token(t_token **tok);
+int				expand_env(t_lexer **lex, int i, t_token **tok);
+// --------------------------------------------------------------------
+// builtinsfun---------------------------------------------------------
+void			ft_initenv_list(char **envp, t_env **env);
 // --------------------------------------------------------------------
 // errorsfun-----------------------------------------------------------
-int	            check_syntax(const t_lexer *lex);
+int	            check_syn(const t_lexer *lex);
 void	        ft_errormsg(char *errormsg);
 void	        ft_error(int errornum, char *errormsg, int bye);
 // --------------------------------------------------------------------
@@ -119,5 +137,6 @@ void	        ft_freecmd(t_cmdito *cmd);
 void	        ft_freelex(t_token **lst, int flag);
 void	        ft_freeio(t_io **lst);
 void	        ft_freemain(char **tabs, char *line);
+void			ft_freetab(char **tabs);
 // --------------------------------------------------------------------
 #endif

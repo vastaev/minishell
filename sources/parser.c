@@ -87,12 +87,16 @@ int lex_pars(char *str)
     g_sh.cmd = 0;
     g_sh.hasp = 0;
     g_sh.nproc = 0;
-    if (!lexer(str, &lex) || !check_syn(str))
+    if (!lexer(str, &lex) || !check_syn(lex))
     {
-        free(lex);
+        ft_freelex(&lex->tok, 1);
+        free(lex->s);
+		free(lex);
         return (0);
     }
     parse(*lex);
-    free(lex);
+    ft_freelex(&lex->tok, 0);
+	free(lex->s);
+	free(lex);
     return (1);
 }

@@ -2,7 +2,7 @@
 
 t_shell	g_sh;
 
-static void init_shell(void)
+static void init_shell()
 {
     dup2(STDIN_FILENO, g_sh.fd[0]);
     dup2(STDOUT_FILENO, g_sh.fd[1]);
@@ -14,16 +14,15 @@ static void	signals(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-int main(int arg, char **argv, char **envp)
+int main()
 {
     char *line;
     char **tabs;
     int i;
+
     init_shell();
     while (21)
     {
-        if (!lex_pars(tabs[i]))
-            continue ;
         signals();
         line = ft_get_line();
         if (!line)
@@ -32,10 +31,15 @@ int main(int arg, char **argv, char **envp)
         i = -1;
         while (tabs[++i])
         {
+            if (!lex_pars(tabs[i]))
+                continue ;
+            printf("%s\n", g_sh.cmd->args[0]);
+            printf("%d n_ar %d freed\n", g_sh.cmd->n_ar, g_sh.cmd->freed);
             errno = 0;
+            ft_freecmd(g_sh.cmd);
             init_fds();
         }
-        // ft_freemain(tabs, line);
+        ft_freemain(tabs, line);
     }
     return (0);
 }

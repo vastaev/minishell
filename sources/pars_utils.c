@@ -37,7 +37,7 @@ int get_len(char *str, int i)
 	return (count);
 }
 
-static void process_herestring(char *str, int fd, const char *del)
+static void process_herestring(char *str, int fd, char *del)
 {
 	int i;
 	int j;
@@ -65,7 +65,7 @@ static void process_herestring(char *str, int fd, const char *del)
 	free(str);
 }
 
-static char get_file()
+static char *get_file(void)
 {
 	char *file;
 	char *ale[2];
@@ -88,11 +88,12 @@ static char get_file()
 		free(ale[0]);
 		free(ale[1]);
 	}
+	return (0);
 }
 
 void    read_heredoc(t_cmdito **cmd, char *del)
 {
-	const char  *delim;
+	char  *delim;
 	char        *str;
 	char        *file;
 	int         fd;

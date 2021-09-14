@@ -26,9 +26,9 @@ int	reads(int fd, char **line, char *buff)
 		len = buff - buff2;
 		if (*buff == '\n' || reads == 0)
 		{
-			line = malloc(len + 1);
+			*line = malloc(len + 1);
 			if (!(*line))
-				return (0);
+				return (-1);
 			mem_cpy(buff2, *line, len, 0);
 			mem_cpy(++buff, buff2, BUFFER_SIZE, 1);
 			if (reads != 0)
@@ -39,14 +39,12 @@ int	reads(int fd, char **line, char *buff)
 	}
 }
 
-char *get_next_line(int fd)
+int	get_next_line(int fd, char **line)
 {
-	static char	buff[BUFFER_SIZE];
-	char *line;
+	static char	buff[BUFFER_SIZE][BUFFER_SIZE];
 
 	if (!line || read(fd, 0, 0) == -1 || BUFFER_SIZE <= 0 || fd < 0)
-		return (0);
-	line = 0;
-	reads(fd, &line, buff);
-	return (&line);
+		return (-1);
+	*line = 0;
+	return (reads(fd, line, *buff));
 }
