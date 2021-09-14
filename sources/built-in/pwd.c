@@ -2,9 +2,12 @@
 
 int	ft_pwd(void)
 {
-	char path[1024];
+	char	*path;
 
-	if (getcwd(path, sizeof(path)))
+	path = malloc(sizeof(char) * 4096);
+	if (path == NULL)
+		return (1);
+	if (getcwd(path, 4096))
 	{
 		printf("%s\n", path);
 		free(path);
@@ -16,9 +19,5 @@ int	ft_pwd(void)
 		free(path);
 		return(1);
 	}
+
 }
-
-// void	ft_cd()
-// {
-
-// }

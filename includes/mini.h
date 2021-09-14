@@ -1,6 +1,7 @@
 #ifndef MINI_H
 # define MINI_H
 
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
@@ -21,7 +22,8 @@
 
 typedef struct s_shell
 {
-    int fd[2];
+    int		fd[2];
+	char	**msEnvp;
 }   t_shell;
 
 extern t_shell  g_sh;
@@ -36,6 +38,7 @@ char	        *ft_strtrim(char const *s1, char const *set);
 void	        *ft_calloc(size_t count, size_t size);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr_fd(char *s, int fd);
+int				ft_2d_array_len(char **s);
 // --------------------------------------------------------------------
 // shellfun -----------------------------------------------------------
 char            *ft_get_line(void);
@@ -43,8 +46,11 @@ char            *ft_prompt(void);
 void            sig_main(int sig);
 void	        init_fds(void);
 void	        ft_error(int errornum, char *errormsg, int bye);
-void			ft_print_errno(void);
+int				ft_print_errno(void);
+void			init_shell(char *envp[]);
 // built-in -----------------------------------------------------------
 int				ft_pwd(void);
+void			ft_echo(char **tabs);
+void			ft_env();
 // --------------------------------------------------------------------
 #endif

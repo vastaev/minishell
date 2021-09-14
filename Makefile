@@ -3,13 +3,14 @@ NAME = minishell
 
 S = sources/
 L = libfun/
-B = builtin/
+B = built-in/
 I =	includes/
 
 O = objects/
 
-SRC =	$Smain.c $Sshell.c $S$Lfunction.c $S$Lfunction2.c $S$Lfunction3.c $Spp.c\
-		$S$Bbuiltins.c
+SRC =	$Smain.c $Sshell.c $S$Lfunction.c $S$Lfunction2.c $S$Lfuncs.c $Spp.c\
+		$Serror_management.c $S$Becho.c $S$Bpwd.c $Sinitialization.c \
+		$S$Benv/env.c 
 OBJS = $(SRCS:$S%.c=$O%.o)
 
 RED			=	\033[1;31m

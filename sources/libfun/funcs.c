@@ -27,3 +27,13 @@ void	ft_putstr_fd(char *s, int fd)
 	if (s != NULL)
 		write(fd, s, ft_strlen(s));
 }
+
+int	ft_2d_array_len(char **s)
+{
+	int	counter;
+
+	counter = 0;
+	while (s[counter] != NULL)
+		counter++;
+	return (counter);
+}

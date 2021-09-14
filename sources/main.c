@@ -11,24 +11,27 @@ int	ft_what_in_line(char **tabs)
 {
 	if (ft_strcmp(tabs[0], "pwd") == 0)
 		ft_pwd();
-	else if (ft_strcmp(tabs[0], "cd") == 0)
-		ft_cd();
+	else if (ft_strcmp(tabs[0], "echo") == 0)
+		ft_echo(tabs);
+	else if (ft_strcmp(tabs[0], "env") == 0)
+		ft_env();
 	return (0);
 }
 
 int main(int arg, char **argv, char **envp)
 {
-    char *line;
-    char **tabs;
-    int i;
+    char 	*line;
+    char 	**tabs;
+    int		i;
 
+	init_shell(envp);
     while (21)
     {
         signals();
         line = ft_get_line();
         if (!line)
             continue ;
-        tabs = ft_split(line, ';');
+        tabs = ft_split(line, ' ');
 		ft_what_in_line(tabs);
         i = -1;
         while (tabs[++i])
