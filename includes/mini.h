@@ -62,7 +62,6 @@ typedef struct s_env
 {
     char *name;
     char *value;
-	int def;
     struct s_env *next;
 } t_env;
 
@@ -123,9 +122,6 @@ int				get_type(char c);
 void			deal_char(t_token *tok, char c, int nstat, t_lexer **lex);
 void			new_token(t_token **tok);
 int				expand_env(t_lexer **lex, int i, t_token **tok);
-// --------------------------------------------------------------------
-// builtinsfun---------------------------------------------------------
-void			ft_initenv_list(char **envp, t_env **env);
 // --------------------------------------------------------------------
 // errorsfun-----------------------------------------------------------
 int	            check_syn(const t_lexer *lex);
