@@ -5,12 +5,13 @@ S = sources/
 L = libfun/
 B = built-in/
 I =	includes/
+E = env/
 
 O = objects/
 
 SRC =	$Smain.c $Sshell.c $S$Lfunction.c $S$Lfunction2.c $S$Lfuncs.c $Spp.c\
 		$Serror_management.c $S$Becho.c $S$Bpwd.c $Sinitialization.c \
-		$S$Benv/env.c 
+		$S$B$Eenv.c $S$B$Eenv_utils.c
 OBJS = $(SRCS:$S%.c=$O%.o)
 
 RED			=	\033[1;31m

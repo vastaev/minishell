@@ -39,6 +39,7 @@ void	        *ft_calloc(size_t count, size_t size);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_2d_array_len(char **s);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 // --------------------------------------------------------------------
 // shellfun -----------------------------------------------------------
 char            *ft_get_line(void);
@@ -52,5 +53,6 @@ void			init_shell(char *envp[]);
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
 void			ft_env();
+void			change_env_field(char *key, char *newValue);
 // --------------------------------------------------------------------
 #endif
