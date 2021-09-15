@@ -1,4 +1,4 @@
-#include "../../includes/mini.h"
+#include "mini.h"
 
 static unsigned int	est1i(char c, char const *set)
 {

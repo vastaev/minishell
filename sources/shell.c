@@ -1,4 +1,4 @@
-#include "../includes/mini.h"
+#include "mini.h"
 
 static void set_state(char a, int *state)
 {

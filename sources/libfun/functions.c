@@ -1,4 +1,4 @@
-#include "../../includes/mini.h"
+#include "mini.h"
 
 int	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

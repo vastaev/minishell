@@ -1,4 +1,5 @@
-#include "../includes/mini.h"
+#include "mini.h"
+
 t_shell	g_sh;
 
 static void	signals(void)
@@ -24,6 +25,8 @@ int main(int arg, char **argv, char **envp)
     char 	**tabs;
     int		i;
 
+	(void) arg;
+	(void) argv;
 	init_shell(envp);
     while (21)
     {
@@ -36,9 +39,15 @@ int main(int arg, char **argv, char **envp)
         i = -1;
         while (tabs[++i])
         {
+            if (!lex_pars(tabs[i]))
+                continue ;
+            printf("%s\n", g_sh.cmd->args[0]);
+            printf("%d n_ar %d freed\n", g_sh.cmd->n_ar, g_sh.cmd->freed);
             errno = 0;
+            ft_freecmd(g_sh.cmd);
             init_fds();
         }
+        ft_freemain(tabs, line);
     }
     return (0);
 }

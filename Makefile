@@ -1,26 +1,45 @@
+SHELL		=	/bin/bash
 
 NAME = minishell
 
 S = sources/
 L = libfun/
 B = built-in/
-I =	includes/
 E = env/
-
+I =	includes/
 O = objects/
 
-SRC =	$Smain.c $Sshell.c $S$Lfunction.c $S$Lfunction2.c $S$Lfuncs.c $Spp.c\
-		$Serror_management.c $S$Becho.c $S$Bpwd.c $Sinitialization.c \
-		$S$B$Eenv.c $S$B$Eenv_utils.c
-OBJS = $(SRCS:$S%.c=$O%.o)
+CC = gcc
+
+USER = $(shell whoami)
+COMP = $(CC) $(FLAGS) $(SRC) $(HEADER) $(LIBS) -o $(NAME)
+COMPO = $(CC) $(FLAGS) -c $< $(HEADER) -o $@
+OS = $(shell uname)
+
+LIBS = -lreadline
+
+ifeq ($(OS), Darwin)
+	LIBS = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
+	COMP = $(CC) $(FLAGS) $(SRC) $(HEADER) $(RDLH) $(LIBS) -o $(NAME)
+	COMPO = $(CC) $(FLAGS) -c $< $(HEADER) $(RDLH) -o $@
+endif
+
+SRC =  $Smain.c $Sshell.c $S$Lfunctions.c $S$Lfunctions2.c $Spp.c \
+		$Sparser.c $Spars_utils.c $Slist_utils.c $Serrors.c $Sfrees.c \
+		$Sget_next_line.c $Senv_utils.c $S$Lfunctions3.c $S$Lfunctions4.c \
+		$Slexer.c $Slex_utils.c $Slex_states.c $Slex_expand.c \
+		$Sinitialization.c $S$B$Eexport_utils.c $S$B$Eenv.c $S$B$Eexport.c\
+		$S$Lfuncs.c $S$Becho.c $S$Bpwd.c $Serror_management.c
+
+OBJS = $(SRC:$S%.c=$O%.o)
 
 RED			=	\033[1;31m
 GRN			=	\033[1;32m
 NOCOL		=	\033[0m
 
-HEADER	=	-I $I
+HEADER	=	-I $I 
 
-LIBS	=	-lreadline
+RDLH = -I /Users/$(USER)/.brew/opt/readline/include
 
 FLAGS		=	-Wall -Wextra -Werror
 
@@ -32,13 +51,15 @@ all:			$(NAME)
 
 $(NAME):		$(OBJS)
 	@echo -e "$(GRN)]100% ==> Success!$(NOCOL)"
-	@gcc $(CFLAGS) $(SRC) $(HEADER) $(LIBS) -o $(NAME)
+	@$(COMP)
 
 $O%.o: 			$S%.c
 	@[ -d $(O) ] || mkdir -p $(O)
 	@[ -d $(O)$(L) ] || mkdir -p $(O)$(L)
+	@[ -d $(O)$(B) ] || mkdir -p $(O)$(B)
+	@[ -d $(O)$(B)$(E) ] || mkdir -p $(O)$(B)$(E)
 	@echo -e -n "$(GRN)#$(NOCOL)"
-	@gcc $(CFLAGS) -c $< $(HEADER) -o $@
+	@$(COMPO)
 
 clean:
 	@rm -rf $(O)

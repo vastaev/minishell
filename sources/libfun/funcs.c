@@ -37,21 +37,3 @@ int	ft_2d_array_len(char **s)
 		counter++;
 	return (counter);
 }
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	step;
-
-	if (n == 0)
-		return (0);
-	step = 0;
-	while (step < n)
-	{
-		if (!ft_charcmp(s1[step], s2[step]))
-			return ((unsigned char)s1[step] - (unsigned char)s2[step]);
-		if ((s1[step] == 0) || (s2[step] == 0))
-			break ;
-		step++;
-	}
-	return (0);
-}

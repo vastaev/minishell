@@ -1,4 +1,5 @@
 #include "../includes/mini.h"
+#include "stdbool.h"
 
 void	ft_echo(char **tabs)
 {
