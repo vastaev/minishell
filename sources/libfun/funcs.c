@@ -37,3 +37,24 @@ int	ft_2d_array_len(char **s)
 		counter++;
 	return (counter);
 }
+
+size_t	ft_strcat(char *dst, const char *src)
+{
+	size_t	dlen;
+	size_t	slen;
+	size_t	offset;
+	size_t	step;
+
+	dlen = ft_strlen(dst);
+	slen = ft_strlen(src);
+	offset = dlen;
+	step = 0;
+	while (src[step] != '\0')
+	{
+		dst[offset] = src[step];
+		step++;
+		offset++;
+	}
+	dst[offset] = '\0';
+	return (dlen + slen);
+}

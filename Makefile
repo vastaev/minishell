@@ -5,7 +5,7 @@ NAME = minishell
 S = sources/
 L = libfun/
 B = built-in/
-E = env/
+E = export/
 I =	includes/
 O = objects/
 
@@ -28,8 +28,9 @@ SRC =  $Smain.c $Sshell.c $S$Lfunctions.c $S$Lfunctions2.c $Spp.c \
 		$Sparser.c $Spars_utils.c $Slist_utils.c $Serrors.c $Sfrees.c \
 		$Sget_next_line.c $Senv_utils.c $S$Lfunctions3.c $S$Lfunctions4.c \
 		$Slexer.c $Slex_utils.c $Slex_states.c $Slex_expand.c \
-		$Sinitialization.c $S$B$Eexport_utils.c $S$B$Eenv.c $S$B$Eexport.c\
-		$S$Lfuncs.c $S$Becho.c $S$Bpwd.c $Serror_management.c
+		$Sinitialization.c $S$B$Eexport_utils.c $S$Benv.c $S$B$Eexport.c \
+		$S$Lfuncs.c $S$Becho.c $S$Bpwd.c $Serror_management.c $S$Lfuncs2.c \
+		$S$B$Eexport_make_list.c
 
 OBJS = $(SRC:$S%.c=$O%.o)
 

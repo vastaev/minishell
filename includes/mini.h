@@ -17,7 +17,7 @@
 # include <fcntl.h>
 
 # define BUFFER_SIZE 1
-# define SYN_ERR "Error: near unspeacted token"
+# define SYN_ERR "Error: near unexpected token"
 # define QUOTE_ERR "Error: missing enclosing quotation mark"
 # define CURLY_ERR "Error: missing enclosing curly brace"
 # define GRN "\001\e[0;32m\002"
@@ -68,7 +68,7 @@ typedef struct s_env
 typedef struct s_shell
 {
 	char	**msEnvp;
-    t_env   *env;
+    t_env   *listEnv;
     t_cmdito *cmd;
     int fd[2];
     int nproc;
@@ -98,6 +98,10 @@ int	            ft_isalnum(int c);
 char	        *ft_strchr(char *s, int c);
 char	        *ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strchjoin(char *str, char c);
+size_t			ft_strcat(char *dst, const char *src);
+size_t			ft_strcpy(char *dst, const char *src);
+long long		ft_atoi(const char *str);
+char			*ft_strdupchr(const char *s1, unsigned char c);
 // --------------------------------------------------------------------
 // shellfun -----------------------------------------------------------
 int				get_next_line(int fd, char **line);
@@ -137,7 +141,10 @@ void			init_shell(char *envp[]);
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
 void			ft_env();
+void			ft_export();
 void			change_env_field(char *key, char *newValue);
+void			add_elem(t_env **lst, t_env *new);
+t_env			*new_env_elem(char *name, char *value);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);

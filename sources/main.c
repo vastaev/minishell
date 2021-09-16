@@ -16,6 +16,8 @@ int	ft_what_in_line(char **tabs)
 		ft_echo(tabs);
 	else if (ft_strcmp(tabs[0], "env") == 0)
 		ft_env();
+	else if (ft_strcmp(tabs[0], "export") == 0)
+		ft_export();
 	return (0);
 }
 

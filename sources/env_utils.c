@@ -4,7 +4,7 @@ char    *ft_getenv(char *name)
 {
     t_env   *ale;
 
-    ale = g_sh.env;
+    ale = g_sh.listEnv;
     while (ale)
     {
         if (!strncmp(name, ale->name, ft_strlen(ale->name) + 1))
