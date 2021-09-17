@@ -21,7 +21,35 @@ void    sig_main(int sig)
     {
         write(1, "\n", 1);
         rl_on_new_line();
-        // rl_replace_line("", 0);
+        rl_replace_line("", 0);
         rl_redisplay();
     }
+}
+
+void	sig_fork(int sig)
+{
+	if (sig == SIGINT)
+		printf("\n");
+	else if (sig == SIGQUIT)
+		printf("Quit: 3\n");
+}
+
+int	ft_isbuiltin(char **args)
+{
+	if (ft_strlen(args[0]) == 3 && !ft_strncmp(args[0], "pwd", 3))
+		return (1);
+	else if (ft_strlen(args[0]) == 2 && !ft_strncmp(args[0], "cd", 2))
+		return (1);
+	else if (ft_strlen(args[0]) == 4 && !ft_strncmp(args[0], "echo", 4))
+		return (1);
+	else if (ft_strlen(args[0]) == 3 && !ft_strncmp(args[0], "env", 3))
+		return (1);
+	else if (ft_strlen(args[0]) == 6 && !ft_strncmp(args[0], "export", 6))
+		return (1);
+	else if (ft_strlen(args[0]) == 5 && !ft_strncmp(args[0], "unset", 5))
+		return (1);
+	else if (ft_strlen(args[0]) == 4 && !ft_strncmp(args[0], "exit", 4))
+		return (1);
+	else
+		return (0);
 }

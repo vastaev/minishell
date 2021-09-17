@@ -110,6 +110,13 @@ void            sig_main(int sig);
 void	        init_fds(void);
 char            *ft_getenv(char *name);
 char    		*ft_get_line(void);
+void			sig_fork(int sig);
+int				ft_what_in_line(char **tabs, int fork);
+int				ft_isbuiltin(char **args);
+char			**ft_list2array(t_env *env);
+char			*ft_findbin(char **args);
+int				ft_redir(t_io *io, int inb);
+void			ft_exec(t_cmdito *cmd);
 // --------------------------------------------------------------------
 // parserfun-----------------------------------------------------------
 int             lex_pars(char *str);

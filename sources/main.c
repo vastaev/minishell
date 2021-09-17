@@ -8,7 +8,7 @@ static void	signals(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-int	ft_what_in_line(char **tabs)
+int	ft_what_in_line(char **tabs, int fork)
 {
 	if (ft_strcmp(tabs[0], "pwd") == 0)
 		ft_pwd();
@@ -18,6 +18,10 @@ int	ft_what_in_line(char **tabs)
 		ft_env();
 	else if (ft_strcmp(tabs[0], "export") == 0)
 		ft_export();
+    else
+		ft_error(127, "Command not found", 0);
+    if (fork == 1)
+        exit(0);
 	return (0);
 }
 
@@ -37,15 +41,13 @@ int main(int arg, char **argv, char **envp)
         if (!line)
             continue ;
         tabs = ft_split(line, ' ');
-		ft_what_in_line(tabs);
         i = -1;
         while (tabs[++i])
         {
             if (!lex_pars(tabs[i]))
                 continue ;
-            printf("%s\n", g_sh.cmd->args[0]);
-            printf("%d n_ar %d freed\n", g_sh.cmd->n_ar, g_sh.cmd->freed);
             errno = 0;
+            ft_exec(g_sh.cmd);
             ft_freecmd(g_sh.cmd);
             init_fds();
         }

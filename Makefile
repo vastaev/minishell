@@ -12,16 +12,16 @@ O = objects/
 CC = gcc
 
 USER = $(shell whoami)
-COMP = $(CC) $(FLAGS) $(SRC) $(HEADER) $(LIBS) -o $(NAME)
-COMPO = $(CC) $(FLAGS) -c $< $(HEADER) -o $@
+COMP = $(CC) $(CFLAGS) $(SRC) $(HEADER) $(LIBS) -o $(NAME)
+COMPO = $(CC) $(CFLAGS) -c $< $(HEADER) -o $@
 OS = $(shell uname)
 
 LIBS = -lreadline
 
 ifeq ($(OS), Darwin)
 	LIBS = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
-	COMP = $(CC) $(FLAGS) $(SRC) $(HEADER) $(RDLH) $(LIBS) -o $(NAME)
-	COMPO = $(CC) $(FLAGS) -c $< $(HEADER) $(RDLH) -o $@
+	COMP = $(CC) $(CFLAGS) $(SRC) $(HEADER) $(RDLH) $(LIBS) -o $(NAME)
+	COMPO = $(CC) $(CFLAGS) -c $< $(HEADER) $(RDLH) -o $@
 endif
 
 SRC =  $Smain.c $Sshell.c $S$Lfunctions.c $S$Lfunctions2.c $Spp.c \
@@ -30,7 +30,7 @@ SRC =  $Smain.c $Sshell.c $S$Lfunctions.c $S$Lfunctions2.c $Spp.c \
 		$Slexer.c $Slex_utils.c $Slex_states.c $Slex_expand.c \
 		$Sinitialization.c $S$B$Eexport_utils.c $S$Benv.c $S$B$Eexport.c \
 		$S$Lfuncs.c $S$Becho.c $S$Bpwd.c $Serror_management.c $S$Lfuncs2.c \
-		$S$B$Eexport_make_list.c
+		$S$B$Eexport_make_list.c $Sbin.c $Sexec.c $Sredir.c 
 
 OBJS = $(SRC:$S%.c=$O%.o)
 
