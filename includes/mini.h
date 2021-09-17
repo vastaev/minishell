@@ -145,6 +145,7 @@ void			ft_export();
 void			change_env_field(char *key, char *newValue);
 void			add_elem(t_env **lst, t_env *new);
 t_env			*new_env_elem(char *name, char *value);
+void			sort_list();
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);
