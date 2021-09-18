@@ -18,7 +18,7 @@ void	ft_exchild(t_cmdito *tmp, int fd[2], int old_fd[2])
 	}
 	check = ft_redir(tmp->io, 1);
 	if (ft_isbuiltin(tmp->args) == 1 && check)
-		ft_what_in_line(tmp->args, 1);
+		ft_what_in_line(tmp->args, 1, tmp);
 	else
 	{
 		signal(SIGINT, sig_fork);
@@ -47,7 +47,7 @@ void	ft_cmds(t_cmdito *tmp, int old_fd[2], int *i, int islast)
 	if (ft_isbuiltin(tmp->args) && !g_sh.hasp)
 	{
 		if (ft_redir(tmp->io, 0))
-			ft_what_in_line(tmp->args, 0);
+			ft_what_in_line(tmp->args, 0, tmp);
 	}
 	else
 	{
