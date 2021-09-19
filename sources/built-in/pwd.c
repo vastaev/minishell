@@ -19,5 +19,4 @@ int	ft_pwd(void)
 		free(path);
 		return(1);
 	}
-
 }

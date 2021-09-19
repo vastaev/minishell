@@ -102,6 +102,7 @@ size_t			ft_strcat(char *dst, const char *src);
 size_t			ft_strcpy(char *dst, const char *src);
 long long		ft_atoi(const char *str);
 char			*ft_strdupchr(const char *s1, unsigned char c);
+void			ft_2d_array_free(char **s);
 // --------------------------------------------------------------------
 // shellfun -----------------------------------------------------------
 int				get_next_line(int fd, char **line);
@@ -143,7 +144,7 @@ int	            check_syn(const t_lexer *lex);
 void	        ft_errormsg(char *errormsg);
 void	        ft_error(int errornum, char *errormsg, int bye);
 int				ft_print_errno(void);
-void			init_shell(char *envp[]);
+void			init_shell(int arg, char *argv[], char *envp[]);
 // built-in -----------------------------------------------------------
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
@@ -153,6 +154,8 @@ void			change_env_field(char *key, char *newValue);
 void			add_elem(t_env **lst, t_env *new);
 t_env			*new_env_elem(char *name, char *value);
 void			sort_list();
+char			*get_value(char *s);
+char			*get_key(char *s);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);

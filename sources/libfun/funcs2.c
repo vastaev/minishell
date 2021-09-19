@@ -74,3 +74,17 @@ char	*ft_strdupchr(const char *s1, unsigned char c)
 	}
 	return (scopy);
 }
+
+void	ft_2d_array_free(char **s)
+{
+	int	len;
+
+	len = ft_2d_array_len(s);
+	while (len--)
+	{
+		free(s[len]);
+		s[len] = NULL;
+	}
+	free(s);
+	s = NULL;
+}

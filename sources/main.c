@@ -31,9 +31,7 @@ int main(int arg, char **argv, char **envp)
     char 	**tabs;
     int		i;
 
-	(void) arg;
-	(void) argv;
-	init_shell(envp);
+	init_shell(arg, argv, envp);
     while (21)
     {
         signals();
