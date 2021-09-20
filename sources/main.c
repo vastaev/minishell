@@ -18,6 +18,8 @@ int	ft_what_in_line(char **tabs, int fork, t_cmdito *cmnd)
 		ft_env();
 	else if (ft_strcmp(tabs[0], "export") == 0)
 		ft_export(cmnd);
+    else if (ft_strcmp(tabs[0], "exit") == 0)
+		ft_exit(0);
     else
 		ft_error(127, "Command not found", 0);
     if (fork == 1)

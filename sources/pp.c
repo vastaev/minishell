@@ -2,11 +2,10 @@
 
 void	ft_error(int errnum, char *errmsg, int bye)
 {
-	write(1, errmsg, ft_strlen(errmsg));
+	printf("%s%s\n", RED, errmsg);
 	errno = errnum;
 	if (bye == 1)
 		exit(errnum);
-	write(1, "\n", 1);
 }
 
 void	init_fds(void)
@@ -31,7 +30,7 @@ void	sig_fork(int sig)
 	if (sig == SIGINT)
 		printf("\n");
 	else if (sig == SIGQUIT)
-		printf("Quit: 3\n");
+		printf("%sQuit: 3\n", RED);
 }
 
 int	ft_isbuiltin(char **args)
