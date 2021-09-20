@@ -43,6 +43,8 @@ char	**ft_list2array(t_env *env)
 	iter = env;
 	while (iter)
 	{
+		if (iter->value == NULL)
+			iter = iter->next;
 		ale[0] = ft_strjoin(iter->name, "=");
 		ale[1] = ft_strjoin(ale[0], iter->value);
 		new[i] = ft_strdup(ale[1]);

@@ -45,7 +45,7 @@ int	find_env_key(char *arg)
 void	add_env_field(char *arg)
 {
 	if (ft_strchr(arg, '=') == 0)
-		add_elem(&g_sh.listEnv, 
+		add_elem(&g_sh.listEnv,
 		new_env_elem(get_key(arg), NULL));
 	else
 	{
