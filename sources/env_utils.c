@@ -23,6 +23,11 @@ static int	ft_getlistlen(t_env *env)
 	ale = env;
 	while (ale)
 	{
+		if (ale->value == NULL)
+		{
+			ale = ale->next;
+			continue ;
+		}
 		cont++;
 		ale = ale->next;
 	}
@@ -43,7 +48,7 @@ char	**ft_list2array(t_env *env)
 	iter = env;
 	while (iter)
 	{
-		if (iter->value == NULL)
+		if (iter->value == NULL && iter->next)
 			iter = iter->next;
 		ale[0] = ft_strjoin(iter->name, "=");
 		ale[1] = ft_strjoin(ale[0], iter->value);
