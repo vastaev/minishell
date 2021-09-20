@@ -42,5 +42,5 @@ int	check_syn(const t_lexer *lex)
 
 void	ft_errormsg(char *errormsg)
 {
-	write(1, errormsg, ft_strlen(errormsg));
+	write(2, errormsg, ft_strlen(errormsg));
 }
