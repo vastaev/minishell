@@ -24,10 +24,10 @@ int	check_syn(const t_lexer *lex)
 	if (lex->esc == 1 && printf("%s%s`newline'\n", RED, SYN_ERR))
 		return (0);
 	if ((lex->state == 1 || lex->state == 0)
-		&& printf("%s\n", QUOTE_ERR))
+		&& printf("%s%s\n", RED, QUOTE_ERR))
 		return (0);
 	if ((lex->cb == 1)
-		&& printf("%s\n", CURLY_ERR))
+		&& printf("%s%s\n", RED, CURLY_ERR))
 		return (0);
 	tmp = lex->tok;
 	if (!ft_strncmp(tmp->data, ";", 2) && printf("%s%s`%c'\n", RED, SYN_ERR, ';'))

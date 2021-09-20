@@ -24,7 +24,7 @@ static char    *ft_reconstruct(char *line)
     i = -1;
     state = 2;
     line = ft_strtrim(line, "\n");
-    if (line[0] == ';' && printf("%s`%c'\n", RED"Error: syntax ", ';'))
+    if (line[0] == ';' && printf("%s%s`%c'\n", RED, "Error: syntax ", ';'))
         return (0);
     new = ft_calloc(ft_strlen(line) + 1, sizeof(char));
     while (line[++i])
@@ -61,7 +61,7 @@ char    *ft_prompt(void)
     ale[2] = ft_strjoin(ale[0], ale[1]);
     free(ale[0]);
     free(ale[1]);
-    ale[0] = ft_strjoin(ale[2], " \u276f ");
+    ale[0] = ft_strjoin(ale[2], " \u276f " WHT);
     free(ale[2]);
     return (ale[0]);
 }
