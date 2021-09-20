@@ -75,7 +75,7 @@ static char *get_file(void)
 	i = 0;
 	while (++i)
 	{
-		ale[0] = ft_strdup(".tmp");
+		ale[0] = ft_strdup("input");
 		ale[1] = ft_itoa(i);
 		file = ft_strjoin(ale[0], ale[1]);
 		if (stat(file, &buf) == -1)

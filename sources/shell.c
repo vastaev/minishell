@@ -78,7 +78,7 @@ char    *ft_get_line(void)
     ale = readline(prompt);
     if (!ale)
     {
-        printf("%s\nExit\n", RED);
+        printf("%sExit\n", RED);
         exit(0);
     }
     errno = ale2;
