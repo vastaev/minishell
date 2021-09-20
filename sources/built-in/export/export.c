@@ -82,26 +82,29 @@ void	update_env_value_field(char *arg)
 	}
 }
 
-void	ft_export(t_cmdito  *cmnd)
+void	print_export(void)
 {
 	t_env 	*ptr;
+
+	ptr = g_sh.listEnv;
+	while (ptr)
+	{
+		if (ptr->value)
+			printf("declare -x %s=\"%s\"\n", ptr->name, ptr->value);
+		else
+			printf("declare -x %s\n", ptr->name);
+		ptr = ptr->next;
+	}
+}
+
+int	ft_export(t_cmdito  *cmnd)
+{
 	int		i;
 
-	sort_list();
-	ptr = g_sh.listEnv;
 	if (cmnd->n_ar == 1)
-		while (ptr)
-		{
-			if (ptr->value)
-				printf("declare -x %s=\"%s\"\n", ptr->name, ptr->value);
-			else
-				printf("declare -x %s\n", ptr->name);
-			ptr = ptr->next;
-		}
+		print_export();
 	else
 	{
-			// 	//если аргумент без равно и он существует, то ничего не происходит
-			// 	//если аргумент с равно, то значение переписывается
 		i = 1;
 		while (cmnd->args[i])
 		{
@@ -115,4 +118,5 @@ void	ft_export(t_cmdito  *cmnd)
 			i++;
 		}
 	}
+	return (0);
 }
