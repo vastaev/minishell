@@ -93,7 +93,7 @@ static char *get_file(void)
 
 void    read_heredoc(t_cmdito **cmd, char *del)
 {
-	char  *delim;
+	char  		*delim;
 	char        *str;
 	char        *file;
 	int         fd;
