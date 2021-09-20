@@ -2,7 +2,7 @@
 
 static void set_state(char a, int *state)
 {
-    if (*state == 3 && a != ';')
+    if (*state == 2 && a != ';')
     {
         if (a == '"')
             *state = 0;
@@ -10,9 +10,9 @@ static void set_state(char a, int *state)
             *state = 1;
     }
     else if (a == '"' && *state == 0)
-        *state = 3;
+        *state = 2;
     else if (a == '\'' && *state == 1)
-        *state = 3;
+        *state = 2;
 }
 
 static char    *ft_reconstruct(char *line)
@@ -22,7 +22,7 @@ static char    *ft_reconstruct(char *line)
     char    *new;
 
     i = -1;
-    state = 3;
+    state = 2;
     line = ft_strtrim(line, "\n");
     if (line[0] == ';' && printf("%s`%c'\n", RED"Error: syntax ", ';'))
         return (0);
