@@ -9,23 +9,20 @@ int ft_tern_op(int cond, int true, int false)
 
 char	*ft_strdup(char *src)
 {
-	char	*zna4enie;
+	char	*zna4;
 	int		dlina;
 
+	if (zna4 == 0)
+		return (0);
+	zna4 = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
 	dlina = 0;
 	while (src[dlina])
-		dlina++;
-	zna4enie = (char *)malloc(sizeof(char) * (dlina + 1));
-	if (zna4enie == 0)
-		return (0);
-	zna4enie[dlina + 1] = '\0';
-	while (dlina > 0)
 	{
-		zna4enie[dlina] = src[dlina];
-		dlina--;
+		zna4[dlina] = src[dlina];
+		dlina++;
 	}
-	zna4enie[0] = src[0];
-	return (&zna4enie[dlina]);
+	zna4[dlina] = '\0';
+	return (zna4);
 }
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
