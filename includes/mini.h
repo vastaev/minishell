@@ -156,6 +156,7 @@ t_env			*new_env_elem(char *name, char *value);
 void			sort_list();
 char			*get_value(char *s);
 char			*get_key(char *s);
+void    		ft_exit(int a);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);
