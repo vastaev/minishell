@@ -35,6 +35,8 @@ int main(int arg, char **argv, char **envp)
 	char	**tabs;
 	int		i;
 
+	if (*envp == 0)
+		ft_error(127, "Error: envp not found!", 1);
 	init_shell(arg, argv, envp);
 	while (21)
 	{
