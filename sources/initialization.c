@@ -22,6 +22,25 @@ char	*get_value(char *s)
 	return (value);
 }
 
+void	update_shlvl()
+{
+	t_env	*ptr;
+	int		tmp;
+
+	ptr = g_sh.listEnv;
+	while (ptr)
+	{
+		if (ft_strcmp("SHLVL", ptr->name) == 0)
+			break;
+		ptr = ptr->next;
+	}
+	tmp = ft_atoi(ptr->value);
+	free(ptr->value);
+	ptr->value = ft_itoa(tmp + 1);
+	ft_2d_array_free(g_sh.msEnvp);
+	g_sh.msEnvp = ft_list2array(g_sh.listEnv);
+}
+
 void	init_shell(int arg, char *argv[], char *envp[])
 {
 	int	arrLen;
@@ -42,5 +61,6 @@ void	init_shell(int arg, char *argv[], char *envp[])
 		i++;
 	}
 	g_sh.msEnvp[i] = NULL;
+	update_shlvl();
 	sort_list();
 }
