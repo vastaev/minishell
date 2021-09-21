@@ -18,6 +18,8 @@ int	ft_what_in_line(char **tabs, int fork, t_cmdito *cmnd)
 		ft_env();
 	else if (ft_strcmp(tabs[0], "export") == 0)
 		ft_export(cmnd);
+	else if (ft_strcmp(tabs[0], "unset") == 0)
+		ft_unset(cmnd);
     else if (ft_strcmp(tabs[0], "exit") == 0)
 		ft_exit(0);
     else
@@ -29,29 +31,29 @@ int	ft_what_in_line(char **tabs, int fork, t_cmdito *cmnd)
 
 int main(int arg, char **argv, char **envp)
 {
-    char 	*line;
-    char 	**tabs;
-    int		i;
+	char	*line;
+	char	**tabs;
+	int		i;
 
 	init_shell(arg, argv, envp);
-    while (21)
-    {
-        signals();
-        line = ft_get_line();
-        if (!line)
-            continue ;
-        tabs = ft_split(line, ';');
-        i = -1;
-        while (tabs[++i])
-        {
-            if (!lex_pars(tabs[i]))
-                continue ;
-            errno = 0;
-            ft_exec(g_sh.cmd);
-            ft_freecmd(g_sh.cmd);
-            init_fds();
-        }
-        ft_freemain(tabs, line);
-    }
-    return (0);
+	while (21)
+	{
+		signals();
+		line = ft_get_line();
+		if (!line)
+			continue ;
+		tabs = ft_split(line, ';');
+		i = -1;
+		while (tabs[++i])
+		{
+			if (!lex_pars(tabs[i]))
+				continue ;
+			errno = 0;
+			ft_exec(g_sh.cmd);
+			ft_freecmd(g_sh.cmd);
+			init_fds();
+		}
+		ft_freemain(tabs, line);
+	}
+	return (0);
 }

@@ -79,12 +79,13 @@ void	ft_2d_array_free(char **s)
 {
 	int	i;
 
+	i = 0;
 	while (s[i])
 	{
 		free(s[i]);
-		// s[i] = NULL;
+		s[i] = NULL;
 		i++;
 	}
 	free(s);
-	// s = NULL;
+	s = NULL;
 }

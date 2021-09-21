@@ -30,7 +30,8 @@ SRC =  $Smain.c $Sshell.c $S$Lfunctions.c $S$Lfunctions2.c $Spp.c \
 		$Slexer.c $Slex_utils.c $Slex_states.c $Slex_expand.c \
 		$Sinitialization.c $S$B$Eexport_utils.c $S$Benv.c $S$B$Eexport.c \
 		$S$Lfuncs.c $S$Becho.c $S$Bpwd.c $Serror_management.c $S$Lfuncs2.c \
-		$S$B$Eexport_make_list.c $Sbin.c $Sexec.c $Sredir.c $S$Bexit.c
+		$S$B$Eexport_make_list.c $Sbin.c $Sexec.c $Sredir.c $S$Bexit.c \
+		$S$Bunset.c
 
 OBJS = $(SRC:$S%.c=$O%.o)
 
