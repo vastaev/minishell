@@ -145,6 +145,7 @@ int	            check_syn(const t_lexer *lex);
 void	        ft_errormsg(char *errormsg);
 void	        ft_error(int errornum, char *errormsg, int bye);
 int				ft_print_errno(void);
+int				ft_write_error_export(char *arg);
 // built-in -----------------------------------------------------------
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
@@ -156,7 +157,9 @@ t_env			*new_env_elem(char *name, char *value);
 void			sort_list();
 char			*get_value(char *s);
 char			*get_key(char *s);
-void    		ft_exit(int a);
+void			ft_exit(int a);
+void			add_env_field(char *arg);
+void			update_env_value_field(char *arg);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);
