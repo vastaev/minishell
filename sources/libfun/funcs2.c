@@ -77,14 +77,14 @@ char	*ft_strdupchr(const char *s1, unsigned char c)
 
 void	ft_2d_array_free(char **s)
 {
-	int	len;
+	int	i;
 
-	len = ft_2d_array_len(s);
-	while (len--)
+	while (s[i])
 	{
-		free(s[len]);
-		s[len] = NULL;
+		free(s[i]);
+		// s[i] = NULL;
+		i++;
 	}
 	free(s);
-	s = NULL;
+	// s = NULL;
 }

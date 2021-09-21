@@ -118,6 +118,7 @@ char			**ft_list2array(t_env *env);
 char			*ft_findbin(char **args);
 int				ft_redir(t_io *io, int inb);
 void			ft_exec(t_cmdito *cmd);
+void			init_shell(int arg, char *argv[], char *envp[]);
 // --------------------------------------------------------------------
 // parserfun-----------------------------------------------------------
 int             lex_pars(char *str);
@@ -144,12 +145,11 @@ int	            check_syn(const t_lexer *lex);
 void	        ft_errormsg(char *errormsg);
 void	        ft_error(int errornum, char *errormsg, int bye);
 int				ft_print_errno(void);
-void			init_shell(int arg, char *argv[], char *envp[]);
 // built-in -----------------------------------------------------------
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
 void			ft_env();
-void			ft_export(t_cmdito *cmnd);
+int				ft_export(t_cmdito *cmnd);
 void			change_env_field(char *key, char *newValue);
 void			add_elem(t_env **lst, t_env *new);
 t_env			*new_env_elem(char *name, char *value);

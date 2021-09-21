@@ -4,7 +4,9 @@ t_env	*new_env_elem(char *name, char *value)
 {
 	t_env	*new;
 	
-	new = malloc(sizeof(t_env));
+	new = malloc(sizeof(*new));
+	if (new == NULL)
+		ft_error(0, "Malloc error", 1);
 	new->name = name;
 	new->value = value;
 	new->next = NULL;

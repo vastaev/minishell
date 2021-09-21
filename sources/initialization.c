@@ -42,4 +42,5 @@ void	init_shell(int arg, char *argv[], char *envp[])
 		i++;
 	}
 	g_sh.msEnvp[i] = NULL;
+	sort_list();
 }
