@@ -29,7 +29,7 @@ int get_len(char *str, int i)
 	count = 0;
 	while (str[i])
 	{
-		if (!ft_isalnum(str[i] && str[i] != '_' ) && str[i] != '?')
+		if (!ft_isalnum(str[i]) && str[i] != '_' && str[i] != '?')
 			return (count);
 		count++;
 		i++;
