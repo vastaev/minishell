@@ -23,7 +23,7 @@ static char    *ft_reconstruct(char *line)
 
     i = -1;
     state = 2;
-    line = ft_strtrim(line, "\n");
+    line = ft_strtrim(line, " \t");
     if (line[0] == ';' && printf("%s%s`%c'\n", RED, "Error: syntax ", ';'))
         return (0);
     new = ft_calloc(ft_strlen(line) + 1, sizeof(char));

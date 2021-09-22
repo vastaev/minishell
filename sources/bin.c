@@ -39,7 +39,7 @@ static char	**path_exists(void)
 
 	searchfolder = 0;
 	if (!ft_getenv("PATH"))
-		ft_error(127, "No such file or directory", 0);
+		ft_error(127, "Error: path not found", 0);
 	else
 		searchfolder = ft_split(ft_getenv("PATH"), ':');
 	return (searchfolder);
