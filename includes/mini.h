@@ -163,6 +163,8 @@ void			update_env_value_field(char *arg);
 int				ft_unset(t_cmdito *cmnd);
 int				input_validation(char *cmnd, char *arg);
 int				find_env_key(char *arg);
+int				ft_cd(t_cmdito *cmnd);
+char			*get_value_ptr(char *toFind);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);

@@ -20,6 +20,8 @@ int	ft_what_in_line(char **tabs, int fork, t_cmdito *cmnd)
 		ft_export(cmnd);
 	else if (ft_strcmp(tabs[0], "unset") == 0)
 		ft_unset(cmnd);
+	else if (ft_strcmp(tabs[0], "cd") == 0)
+		ft_cd(cmnd);
     else if (ft_strcmp(tabs[0], "exit") == 0)
 		ft_exit(0);
     else

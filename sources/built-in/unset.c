@@ -14,13 +14,13 @@ void	delete_from_list(char *arg)
 	{
 		if (ft_strncmp(ptr->next->name, arg, i) == 0)
 		{
-			tmp = ptr->next;
+			tmp = ptr;
 			ptr->next = ptr->next->next;
-			free(tmp->name);
-			if (tmp->value)
-				free(tmp->value);
-			free(tmp);
-			tmp = NULL;
+			free(tmp->next->name);
+			if (tmp->next->value)
+				free(tmp->next->value);
+			free(tmp->next);
+			tmp->next = NULL;
 			return ;
 		}
 		ptr = ptr->next;

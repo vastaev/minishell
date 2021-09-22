@@ -6,6 +6,7 @@ S = sources/
 L = libfun/
 B = built-in/
 E = export/
+C = cd/
 I =	includes/
 O = objects/
 
@@ -31,7 +32,7 @@ SRC =  $Smain.c $Sshell.c $S$Lfunctions.c $S$Lfunctions2.c $Spp.c \
 		$Sinitialization.c $S$B$Eexport_utils.c $S$Benv.c $S$B$Eexport.c \
 		$S$Lfuncs.c $S$Becho.c $S$Bpwd.c $Serror_management.c $S$Lfuncs2.c \
 		$S$B$Eexport_make_list.c $Sbin.c $Sexec.c $Sredir.c $S$Bexit.c \
-		$S$Bunset.c
+		$S$Bunset.c $S$B$Ccd.c $S$B$Ccd_utils.c
 
 OBJS = $(SRC:$S%.c=$O%.o)
 
@@ -60,6 +61,7 @@ $O%.o: 			$S%.c
 	@[ -d $(O)$(L) ] || mkdir -p $(O)$(L)
 	@[ -d $(O)$(B) ] || mkdir -p $(O)$(B)
 	@[ -d $(O)$(B)$(E) ] || mkdir -p $(O)$(B)$(E)
+	@[ -d $(O)$(B)$(C) ] || mkdir -p $(O)$(B)$(C)
 	@echo -e -n "$(GRN)#$(NOCOL)"
 	@$(COMPO)
 

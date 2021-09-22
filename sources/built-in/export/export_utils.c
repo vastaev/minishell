@@ -45,7 +45,7 @@ int	find_env_key(char *arg)
 	while (arg[i] && arg[i] != '=')
 		i++;
 	ptr = g_sh.listEnv;
-	while (ptr != NULL)
+	while (ptr)
 	{
 		if (ft_strncmp(ptr->name, arg, i) == 0)
 			return (1);
