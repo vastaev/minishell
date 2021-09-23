@@ -7,14 +7,14 @@ int ft_tern_op(int cond, int true, int false)
     return (false);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*zna4;
 	int		dlina;
 
-	if (zna4 == 0)
-		return (0);
 	zna4 = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!zna4)
+		return (0);
 	dlina = 0;
 	while (src[dlina])
 	{

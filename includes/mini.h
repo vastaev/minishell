@@ -89,7 +89,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_2d_array_len(char **s);
 int             ft_tern_op(int cond, int true, int false);
-char	        *ft_strdup(char *src);
+char	        *ft_strdup(const char *src);
 int	            ft_strncmp(const char *s1, const char *s2, unsigned int n);
 char	        *ft_itoa(int s);
 int	            ft_isalpha(int c);
