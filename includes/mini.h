@@ -165,6 +165,7 @@ int				input_validation(char *cmnd, char *arg);
 int				find_env_key(char *arg);
 int				ft_cd(t_cmdito *cmnd);
 char			*get_value_ptr(char *toFind);
+int				ok_chars(char c);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);

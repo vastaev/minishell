@@ -4,12 +4,12 @@ int	input_validation(char *cmnd, char *arg)
 {
 	int	i;
 
-	if (arg[0] == '=' || ft_isdigit(arg[0]) || !ft_isalpha(arg[0]))
+	if (arg[0] == '=' || ft_isdigit(arg[0]) || !ok_chars(arg[0]))
 		return (ft_write_error_arg(cmnd, arg));
 	i = 0;
 	while (arg[i] && arg[i] != '=')
 	{
-		if (!ft_isalpha(arg[i]) && !ft_isdigit(arg[i]))
+		if (!ok_chars(arg[i]) && !ft_isdigit(arg[i]))
 			return (ft_write_error_arg(cmnd, arg));
 		i++;
 	}

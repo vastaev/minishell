@@ -23,6 +23,7 @@ int	ft_cd(t_cmdito *cmnd)
 			return (1);
 		}
 		change_dir(get_value_ptr("HOME"), NULL);
+		return (0);
 	}
 	return (0);
 }

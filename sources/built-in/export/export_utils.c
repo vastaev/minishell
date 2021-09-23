@@ -53,3 +53,10 @@ int	find_env_key(char *arg)
 	}
 	return (0);
 }
+
+int	ok_chars(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_')
+		return (1);
+	return (0);
+}
