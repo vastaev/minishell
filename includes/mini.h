@@ -146,6 +146,7 @@ void	        ft_errormsg(char *errormsg);
 void	        ft_error(int errornum, char *errormsg, int bye);
 int				ft_print_errno(void);
 int				ft_write_error_arg(char *cmnd, char *arg);
+int				ft_write_cd_not_set(char *key);
 // built-in -----------------------------------------------------------
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
@@ -163,9 +164,10 @@ void			update_env_value_field(char *arg);
 int				ft_unset(t_cmdito *cmnd);
 int				input_validation(char *cmnd, char *arg);
 int				find_env_key(char *arg);
-int				ft_cd(t_cmdito *cmnd);
+int				ft_cd(t_cmdito *cmnd, int flag);
 char			*get_value_ptr(char *toFind);
 int				ok_chars(char c);
+int				set_new(char *oldOrPresent);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);
