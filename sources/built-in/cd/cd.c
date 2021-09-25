@@ -22,13 +22,19 @@ int	cd_to(char *key)
 
 int	where_to_cd(t_cmdito *cmnd)
 {
+	char	*tmp;
+
 	if (ft_strcmp(cmnd->args[1], "-") == 0)
 	{
 		if (cd_to("OLDPWD") == 1)
 			return (1);
 	}
-	else if (ft_strcmp(cmnd->args[1], "~") == 0)
-		ft_cd(cmnd, 1);
+	else if (cmnd->args[1][0] == '~')
+	{
+		tmp = ft_strjoin(getenv("HOME"), cmnd->args[1] + 1);
+		msh_change_dir(tmp);
+		free(tmp);
+	}
 	else
 		msh_change_dir(cmnd->args[1]);
 	return (0);
