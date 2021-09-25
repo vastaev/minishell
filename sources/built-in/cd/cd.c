@@ -2,8 +2,9 @@
 
 int	msh_change_dir(char *dir)
 {
-	if (set_new("OLDPWD=") == 1)
-		return (1);
+	if (ft_strcmp(dir, get_value_ptr("OLDPWD")) != 0)
+		if (set_new("OLDPWD=") == 1)
+			return (1);
 	if (chdir(dir) == -1)
 		return (1);	
 	if (set_new("PWD=") == 1)
