@@ -30,30 +30,11 @@ void	add_env_field(char *arg)
 	}
 }
 
-void	update_env_value_field(char *arg)
+void	update_env_value_field(char *arg, t_env *ptr)
 {
-	t_env	*ptr;
-	int		i;
-
-	i = 0;
-	while (arg[i] && arg[i] != '=')
-		i++;
-	if (arg[i] != '=')
-		return ;
-	ptr = g_sh.listEnv;
-	while (ptr)
-	{
-		if (ft_strncmp(ptr->name, arg, i) == 0)
-		{
-			if (ptr->value)
-				free(ptr->value);
-			ptr->value = get_value(arg);
-			ft_2d_array_free(g_sh.msEnvp);
-			g_sh.msEnvp = ft_list2array(g_sh.listEnv);	
-			return ;
-		}
-		ptr = ptr->next;
-	}
+	if (ptr->value)
+		free(ptr->value);
+	ptr->value = get_value(arg);
 }
 
 void	print_export(void)
@@ -74,6 +55,7 @@ void	print_export(void)
 int	ft_export(t_cmdito  *cmnd)
 {
 	int		i;
+	t_env	*foundPtr;
 
 	if (cmnd->n_ar == 1)
 		print_export();
@@ -84,10 +66,11 @@ int	ft_export(t_cmdito  *cmnd)
 		{
 			if (input_validation("export", cmnd->args[i]) == 0)
 			{
-				if (find_env_key(cmnd->args[i]) == 0)
+				foundPtr = find_env_key(cmnd->args[i]);
+				if (foundPtr == NULL)
 					add_env_field(cmnd->args[i]);
 				else
-					update_env_value_field(cmnd->args[i]);
+					update_env_value_field(cmnd->args[i], foundPtr);
 			}
 			i++;
 		}

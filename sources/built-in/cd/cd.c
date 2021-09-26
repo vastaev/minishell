@@ -2,11 +2,15 @@
 
 int	msh_change_dir(char *dir)
 {
-	if (ft_strcmp(dir, get_value_ptr("OLDPWD")) != 0)
-		if (set_new("OLDPWD=") == 1)
-			return (1);
+	t_env	*ptr;
+	char	*tmp;
+
 	if (chdir(dir) == -1)
-		return (1);	
+		return (1);
+	tmp = ft_strjoin("OLDPWD=", get_value_ptr("PWD"));
+	ptr = find_env_key("OLDPWD");
+	update_env_value_field(tmp, ptr);
+	free(tmp);
 	if (set_new("PWD=") == 1)
 		return(1);
 	return (0);
@@ -14,9 +18,12 @@ int	msh_change_dir(char *dir)
 
 int	cd_to(char *key)
 {
-	if (find_env_key(key) != 1)
+	t_env	*ptr;
+
+	ptr = find_env_key(key);
+	if (ptr == NULL)
 		return (ft_write_cd_not_set(key));
-	msh_change_dir(get_value_ptr(key));
+	msh_change_dir(ptr->value);
 	return (0);	
 }
 
@@ -26,6 +33,7 @@ int	where_to_cd(t_cmdito *cmnd)
 
 	if (ft_strcmp(cmnd->args[1], "-") == 0)
 	{
+		printf("%s\n", get_value_ptr("OLDPWD"));
 		if (cd_to("OLDPWD") == 1)
 			return (1);
 	}

@@ -13,9 +13,7 @@ char	*get_value(char *s)
 	char	*value;
 	int		i;
 
-	i = 0;
-	while (s[i] != '=')
-		i++;
+	i = ft_keylen(s);
 	if (s[i] != '=')
 		return (NULL);
 	value = ft_strdup(s + i + 1);

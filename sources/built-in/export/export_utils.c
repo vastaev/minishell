@@ -36,22 +36,26 @@ void	sort_list()
 	free(tmp);
 }
 
-int	find_env_key(char *arg)
+t_env	*find_env_key(char *arg)
 {
-	int		i;
 	t_env	*ptr;
+	char	*tmpKey;
 
-	i = 0;
-	while (arg[i] && arg[i] != '=')
-		i++;
+	tmpKey = get_key(arg);
+	if (!tmpKey)
+		return (NULL);
 	ptr = g_sh.listEnv;
 	while (ptr)
 	{
-		if (ft_strncmp(ptr->name, arg, i) == 0)
-			return (1);
+		if (ft_strcmp(ptr->name, tmpKey) == 0)
+		{
+			free(tmpKey);
+			return (ptr);
+		}
 		ptr = ptr->next;
 	}
-	return (0);
+	free(tmpKey);
+	return (NULL);
 }
 
 int	ok_chars(char c)
@@ -59,4 +63,14 @@ int	ok_chars(char c)
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_')
 		return (1);
 	return (0);
+}
+
+int	ft_keylen(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i] && arg[i] != '=')
+		i++;
+	return (i);
 }

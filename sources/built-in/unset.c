@@ -1,7 +1,29 @@
 #include "mini.h"
 
-void	delete_from_list(char *arg)
+void	delete_from_list(t_env **lst, char *arg)
 {
+	// t_env	*elem;
+	// t_env	*curr;
+
+	// elem = NULL;
+	// curr = *lst;
+	// if (curr && !ft_strncmp(curr->name, arg, ft_keylen(arg)))
+	// {
+	// 	elem = curr;
+	// 	*lst = elem->next;
+	// 	elem->next = NULL;
+	// }
+	// while (curr && curr->next)
+	// {
+	// 	if (!ft_strncmp(curr->next->name, arg, ft_keylen(arg)))
+	// 	{
+	// 		elem = curr->next;
+	// 		curr->next = curr->next->next;
+	// 		elem->next = NULL;
+	// 		break ;
+	// 	}
+	// 	curr = curr->next;
+	// }
 	t_env	*ptr;
 	t_env	*tmp;
 	int		i;
@@ -39,7 +61,7 @@ int	ft_unset(t_cmdito *cmnd)
 	{
 		if (input_validation("unset", cmnd->args[i]) == 0)
 		{
-			delete_from_list(cmnd->args[i]);
+			delete_from_list(&g_sh.listEnv, cmnd->args[i]);
 			ft_2d_array_free(g_sh.msEnvp);
 			g_sh.msEnvp = ft_list2array(g_sh.listEnv);	
 		}

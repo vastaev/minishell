@@ -160,14 +160,15 @@ char			*get_value(char *s);
 char			*get_key(char *s);
 void			ft_exit(int a);
 void			add_env_field(char *arg);
-void			update_env_value_field(char *arg);
+void			update_env_value_field(char *arg, t_env *ptr);
 int				ft_unset(t_cmdito *cmnd);
 int				input_validation(char *cmnd, char *arg);
-int				find_env_key(char *arg);
+t_env			*find_env_key(char *arg);
 int				ft_cd(t_cmdito *cmnd, int flag);
 char			*get_value_ptr(char *toFind);
 int				ok_chars(char c);
 int				set_new(char *oldOrPresent);
+int				ft_keylen(char *arg);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);
