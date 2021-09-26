@@ -48,7 +48,7 @@ char	**ft_list2array(t_env *env)
 	iter = env;
 	while (iter)
 	{
-		if (iter->value == NULL && iter->next)
+		if (iter->value == NULL)
 		{
 			iter = iter->next;
 			continue ;

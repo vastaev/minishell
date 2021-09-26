@@ -3,7 +3,6 @@
 char	*get_value_ptr(char *toFind)
 {
 	t_env	*ptr;
-	char	*pwd;
 
 	ptr = g_sh.listEnv;
 	while (ptr)

@@ -40,6 +40,7 @@ int main(int arg, char **argv, char **envp)
 	if (*envp == 0)
 		ft_error(127, "Error: envp not found!", 1);
 	init_shell(arg, argv, envp);
+	rl_outstream = stderr;
 	while (21)
 	{
 		signals();

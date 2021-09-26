@@ -1,57 +1,41 @@
 #include "mini.h"
 
-void	delete_from_list(t_env **lst, char *arg)
+t_env	*delete_from_list(t_env **lst, char *arg)
 {
-	// t_env	*elem;
-	// t_env	*curr;
+	t_env	*elem;
+	t_env	*curr;
+	char	*tmp;
 
-	// elem = NULL;
-	// curr = *lst;
-	// if (curr && !ft_strncmp(curr->name, arg, ft_keylen(arg)))
-	// {
-	// 	elem = curr;
-	// 	*lst = elem->next;
-	// 	elem->next = NULL;
-	// }
-	// while (curr && curr->next)
-	// {
-	// 	if (!ft_strncmp(curr->next->name, arg, ft_keylen(arg)))
-	// 	{
-	// 		elem = curr->next;
-	// 		curr->next = curr->next->next;
-	// 		elem->next = NULL;
-	// 		break ;
-	// 	}
-	// 	curr = curr->next;
-	// }
-	t_env	*ptr;
-	t_env	*tmp;
-	int		i;
-
-	i = 0;
-	while (arg[i] && arg[i] != '=')
-		i++;
-	ptr = g_sh.listEnv;
-	while (ptr->next)
+	elem = NULL;
+	curr = *lst;
+	tmp = get_key(arg);
+	if (curr && ft_strcmp(curr->name, tmp) == 0)
 	{
-		if (ft_strncmp(ptr->next->name, arg, i) == 0)
-		{
-			tmp = ptr->next;
-			ptr->next = tmp->next;
-			tmp->next = NULL;
-			free(tmp->name);
-			if (tmp->value)
-				free(tmp->value);
-			free(tmp);
-			return ;
-		}
-		ptr = ptr->next;
+		elem = curr;
+		*lst = elem->next;
+		elem->next = NULL;
+		free(tmp);
+		return (elem);
 	}
+	while (curr->next)
+	{
+		if (ft_strcmp(curr->next->name, tmp) == 0)
+		{
+			elem = curr->next;
+			curr->next = curr->next->next;
+			elem->next = NULL;
+			break ;
+		}
+		curr = curr->next;
+	}
+	free(tmp);
+	return (elem);
 }
 
 int	ft_unset(t_cmdito *cmnd)
 {
 	int		i;
+	t_env	*tmp;
 	t_env	*ptr;
 
 	if (cmnd->n_ar == 1)
@@ -59,11 +43,16 @@ int	ft_unset(t_cmdito *cmnd)
 	i = 1;
 	while (cmnd->args[i])
 	{
-		if (input_validation("unset", cmnd->args[i]) == 0)
+		ptr = find_env_key(cmnd->args[i]);
+		if (!input_validation("unset", cmnd->args[i]) && ptr)
 		{
-			delete_from_list(&g_sh.listEnv, cmnd->args[i]);
+			tmp = delete_from_list(&g_sh.listEnv, cmnd->args[i]);
+			free(tmp->name);
+			if (tmp->value)
+				free(tmp->value);
+			free(tmp);
 			ft_2d_array_free(g_sh.msEnvp);
-			g_sh.msEnvp = ft_list2array(g_sh.listEnv);	
+			g_sh.msEnvp = ft_list2array(g_sh.listEnv);
 		}
 		i++;
 	}

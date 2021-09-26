@@ -44,7 +44,7 @@ HEADER	=	-I $I
 
 RDLH = -I /opt/homebrew/opt/readline/include
 
-FLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-g -Wall -Wextra -Werror
 
 start:
 	@[ -f "minishell" ] || echo -e -n "$(GRN)[Compiling]: ["
