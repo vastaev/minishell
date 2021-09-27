@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:17:19 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:17:25 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/27 13:45:10 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_what_in_line(char **tabs, int fork, t_cmdito *cmnd)
 	else if (ft_strcmp(tabs[0], "unset") == 0)
 		ft_unset(cmnd);
 	else if (ft_strcmp(tabs[0], "cd") == 0)
-		ft_cd(cmnd, 0);
+		ft_cd(tabs);
     else if (ft_strcmp(tabs[0], "exit") == 0)
 		ft_exit(0);
     else

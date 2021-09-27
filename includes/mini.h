@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese and nephilister                    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:38:00 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:38:45 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/27 13:46:09 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ void			update_env_value_field(char *arg, t_env *ptr);
 int				ft_unset(t_cmdito *cmnd);
 int				input_validation(char *cmnd, char *arg);
 t_env			*find_env_key(char *arg);
-int				ft_cd(t_cmdito *cmnd, int flag);
+int				ft_cd(char **args);
 char			*get_value_ptr(char *toFind);
 int				ok_chars(char c);
 int				set_new(char *oldOrPresent);
