@@ -6,7 +6,7 @@ int	msh_change_dir(char *dir)
 	char	*tmp;
 
 	if (chdir(dir) == -1)
-		return (1);
+		return (chdir_error(dir));
 	tmp = ft_strjoin("OLDPWD=", get_value_ptr("PWD"));
 	ptr = find_env_key("OLDPWD");
 	update_env_value_field(tmp, ptr);
@@ -33,9 +33,9 @@ int	where_to_cd(t_cmdito *cmnd)
 
 	if (ft_strcmp(cmnd->args[1], "-") == 0)
 	{
-		printf("%s\n", get_value_ptr("OLDPWD"));
 		if (cd_to("OLDPWD") == 1)
 			return (1);
+		printf("%s\n", get_value_ptr("PWD"));
 	}
 	else if (cmnd->args[1][0] == '~')
 	{

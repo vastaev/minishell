@@ -18,13 +18,3 @@ int	ft_write_error_arg(char *cmnd, char *arg)
 	errno = 1;
 	return (1);
 }
-
-int	ft_write_cd_not_set(char *key)
-{
-	write(2, RED, 10);
-	write(2, "msh: cd: ", 10);
-	write(2, key, ft_strlen(key));
-	write(2, " not set\n", 10);
-	errno = 1;
-	return (1);
-}

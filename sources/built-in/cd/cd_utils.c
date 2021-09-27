@@ -30,3 +30,24 @@ int	set_new(char *oldOrPresent)
 	free(newPwd);
 	return (0);
 }
+
+int	ft_write_cd_not_set(char *key)
+{
+	write(2, RED, 10);
+	write(2, "msh: cd: ", 10);
+	write(2, key, ft_strlen(key));
+	write(2, " not set\n", 10);
+	errno = 1;
+	return (1);
+}
+
+int	chdir_error(char *dir)
+{
+	write(2, RED, 10);
+	ft_putstr_fd("msh: cd: ", 2);
+	ft_putstr_fd(dir, 2);
+	ft_putstr_fd(": ", 2);
+	ft_print_errno();
+	errno = 1;
+	return (1);
+}

@@ -169,6 +169,7 @@ char			*get_value_ptr(char *toFind);
 int				ok_chars(char c);
 int				set_new(char *oldOrPresent);
 int				ft_keylen(char *arg);
+int				chdir_error(char *dir);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);
