@@ -20,7 +20,7 @@ OS = $(shell uname)
 LIBS = -lreadline
 
 ifeq ($(OS), Darwin)
-	LIBS = -lreadline -L/opt/homebrew/opt/readline/lib
+	LIBS = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 	COMP = $(CC) $(CFLAGS) $(SRC) $(HEADER) $(RDLH) $(LIBS) -o $(NAME)
 	COMPO = $(CC) $(CFLAGS) -c $< $(HEADER) $(RDLH) -o $@
 endif
@@ -42,9 +42,9 @@ NOCOL		=	\033[0m
 
 HEADER	=	-I $I 
 
-RDLH = -I /opt/homebrew/opt/readline/include
+RDLH = -I /Users/$(USER)/.brew/opt/readline/include
 
-CFLAGS		=	-g -Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror
 
 start:
 	@[ -f "minishell" ] || echo -e -n "$(GRN)[Compiling]: ["
