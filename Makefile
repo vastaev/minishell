@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+         #
+#    By: uterese <and nephilister>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/27 12:26:24 by uterese           #+#    #+#              #
-#    Updated: 2021/09/27 17:38:50 by nephilister      ###   ########.fr        #
+#    Updated: 2021/09/27 23:27:25 by uterese          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

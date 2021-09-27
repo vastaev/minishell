@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:58 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:20:59 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:06 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ int	ft_unset(t_cmdito *cmnd)
 		ptr = find_env_key(cmnd->args[i]);
 		if (!input_validation("unset", cmnd->args[i]) && ptr)
 		{
-			tmp = delete_from_list(&g_sh.listEnv, ptr);
+			tmp = delete_from_list(&g_sh.listenv, ptr);
 			free(tmp->name);
 			if (tmp->value)
 				free(tmp->value);
 			free(tmp);
-			ft_2d_array_free(g_sh.msEnvp);
-			g_sh.msEnvp = ft_list2array(g_sh.listEnv);
+			ft_2d_array_free(g_sh.msenvp);
+			g_sh.msenvp = ft_list2array(g_sh.listenv);
 		}
 		i++;
 	}

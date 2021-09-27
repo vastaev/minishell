@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:40 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:24:00 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 01:41:32 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:45 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 17:07:03 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:14 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	input_validation(char *cmnd, char *arg)
 void	add_env_field(char *arg)
 {
 	if (ft_strchr(arg, '=') == 0)
-		add_elem(&g_sh.listEnv,
+		add_elem(&g_sh.listenv,
 			new_env_elem(get_key(arg), NULL));
 	else
 	{
-		add_elem(&g_sh.listEnv, new_env_elem(get_key(arg),
+		add_elem(&g_sh.listenv, new_env_elem(get_key(arg),
 				get_value(arg)));
-		ft_2d_array_free(g_sh.msEnvp);
-		g_sh.msEnvp = ft_list2array(g_sh.listEnv);
+		ft_2d_array_free(g_sh.msenvp);
+		g_sh.msenvp = ft_list2array(g_sh.listenv);
 	}
 }
 
@@ -59,15 +59,15 @@ void	update_env_value_field(char *arg, t_env *ptr)
 	if (ptr->value)
 		free(ptr->value);
 	ptr->value = get_value(arg);
-	ft_2d_array_free(g_sh.msEnvp);
-	g_sh.msEnvp = ft_list2array(g_sh.listEnv);
+	ft_2d_array_free(g_sh.msenvp);
+	g_sh.msenvp = ft_list2array(g_sh.listenv);
 }
 
 void	print_export(void)
 {
 	t_env	*ptr;
 
-	ptr = g_sh.listEnv;
+	ptr = g_sh.listenv;
 	while (ptr)
 	{
 		if (ptr->value)

@@ -34,23 +34,22 @@ int	ft_what_in_line(char **tabs, int fork, t_cmdito *cmnd)
 		ft_unset(cmnd);
 	else if (ft_strcmp(tabs[0], "cd") == 0)
 		ft_cd(tabs);
-    else if (ft_strcmp(tabs[0], "exit") == 0)
+	else if (ft_strcmp(tabs[0], "exit") == 0)
 		ft_exit(0);
-    else
+	else
 		ft_error(127, "Command not found", 0);
-    if (fork == 1)
-        exit(0);
+	if (fork == 1)
+		exit(0);
 	return (0);
 }
 
-int main(int arg, char **argv, char **envp)
+int	main(int arg, char **argv, char **envp)
 {
 	char	*line;
 	char	**tabs;
 	int		i;
 
 	init_shell(arg, argv, envp);
-	rl_outstream = stderr;
 	while (21)
 	{
 		signals();

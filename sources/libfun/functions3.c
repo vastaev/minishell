@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   functions3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:16:19 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:16:20 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/28 01:27:59 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int ft_tern_op(int cond, int true, int false)
+int	ft_tern_op(int cond, int true, int false)
 {
-    if (cond)
-        return (true);
-    return (false);
+	if (cond)
+		return (true);
+	return (false);
 }
 
 char	*ft_strdup(const char *src)

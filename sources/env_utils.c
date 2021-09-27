@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:15:40 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:15:41 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/28 02:16:59 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-char    *ft_getenv(char *name)
+char	*ft_getenv(char *name)
 {
-    t_env   *ale;
+	t_env	*ale;
 
-    ale = g_sh.listEnv;
-    while (ale)
-    {
-        if (!ft_strncmp(name, ale->name, ft_strlen(ale->name) + 1))
-            return (ale->value);
-        ale = ale->next;
-    }
-    return (0);
+	ale = g_sh.listenv;
+	while (ale)
+	{
+		if (!ft_strncmp(name, ale->name, ft_strlen(ale->name) + 1))
+			return (ale->value);
+		ale = ale->next;
+	}
+	return (0);
 }
 
 static int	ft_getlistlen(t_env *env)
@@ -67,12 +67,9 @@ char	**ft_list2array(t_env *env)
 		}
 		ale[0] = ft_strjoin(iter->name, "=");
 		ale[1] = ft_strjoin(ale[0], iter->value);
-		new[i] = ft_strdup(ale[1]);
-		if (ale[0])
-			free(ale[0]);
-		if (ale[1])
-			free(ale[1]);
-		i++;
+		new[i++] = ft_strdup(ale[1]);
+		free(ale[0]);
+		free(ale[1]);
 		iter = iter->next;
 	}
 	return (new);

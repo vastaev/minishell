@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:40 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 17:33:29 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:05 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_value(char *s)
 	return (value);
 }
 
-void	update_shlvl()
+void	update_shlvl(void)
 {
 	t_env	*ptr;
 	int		tmp;
@@ -47,23 +47,23 @@ void	update_shlvl()
 	}
 	else
 		add_env_field("OLDPWD");
-	ptr = g_sh.listEnv;
+	ptr = g_sh.listenv;
 	while (ptr)
 	{
 		if (ft_strcmp("SHLVL", ptr->name) == 0)
-			break;
+			break ;
 		ptr = ptr->next;
 	}
 	tmp = ft_atoi(ptr->value);
 	free(ptr->value);
 	ptr->value = ft_itoa(tmp + 1);
-	ft_2d_array_free(g_sh.msEnvp);
-	g_sh.msEnvp = ft_list2array(g_sh.listEnv);
+	ft_2d_array_free(g_sh.msenvp);
+	g_sh.msenvp = ft_list2array(g_sh.listenv);
 }
 
 void	init_shell(int arg, char *argv[], char *envp[])
 {
-	int	arrLen;
+	int	arrlen;
 	int	i;
 
 	(void) arg;
@@ -71,20 +71,20 @@ void	init_shell(int arg, char *argv[], char *envp[])
 	if (*envp == 0)
 		ft_error(127, "Error: envp not found!", 1);
 	dup2(STDIN_FILENO, g_sh.fd[0]);
-    dup2(STDOUT_FILENO, g_sh.fd[1]);
-	arrLen = ft_2d_array_len(envp);
-	g_sh.msEnvp = malloc(sizeof(char *) * (arrLen + 1));
-	if (!g_sh.msEnvp)
+	dup2(STDOUT_FILENO, g_sh.fd[1]);
+	arrlen = ft_2d_array_len(envp);
+	g_sh.msenvp = malloc(sizeof(char *) * (arrlen + 1));
+	if (!g_sh.msenvp)
 		ft_error(-1, "Malloc error", 1);
 	i = 0;
-	while (i < arrLen)
+	while (i < arrlen)
 	{
-		g_sh.msEnvp[i] = ft_strdup(envp[i]);
-		add_elem(&g_sh.listEnv, 
-		new_env_elem(get_key(g_sh.msEnvp[i]), get_value(g_sh.msEnvp[i])));
+		g_sh.msenvp[i] = ft_strdup(envp[i]);
+		add_elem(&g_sh.listenv,
+			new_env_elem(get_key(g_sh.msenvp[i]), get_value(g_sh.msenvp[i])));
 		i++;
 	}
-	g_sh.msEnvp[i] = NULL;
+	g_sh.msenvp[i] = NULL;
 	update_shlvl();
 	sort_list();
 }

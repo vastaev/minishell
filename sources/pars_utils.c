@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:17:36 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:17:37 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/28 01:32:15 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "mini.h"
+#include "mini.h"
 
 char	*get_val(char *str, int i, int ret)
 {
-	char *line;
-	char *ale;
+	char	*line;
+	char	*ale;
 
 	ale = ft_substr(str, i + 1, ret);
 	line = ft_getenv(ale);
@@ -34,9 +34,9 @@ char	*get_val(char *str, int i, int ret)
 	return (line);
 }
 
-int get_len(char *str, int i)
+int	get_len(char *str, int i)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (str[i])
@@ -49,18 +49,18 @@ int get_len(char *str, int i)
 	return (count);
 }
 
-static void process_herestring(char *str, int fd, const char *del)
+static void	process_herestring(char *str, int fd, const char *del)
 {
-	int i;
-	int j;
-	char *new;
+	int		i;
+	int		j;
+	char	*new;
 
 	i = -1;
 	if (ft_strchr(del, '"'))
 		write(fd, str, ft_strlen(str));
 	else
 	{
-		while(str[++i])
+		while (str[++i])
 		{
 			if (str[i] == '$')
 			{
@@ -77,12 +77,12 @@ static void process_herestring(char *str, int fd, const char *del)
 	free(str);
 }
 
-static char *get_file(void)
+static char	*get_file(void)
 {
-	char *file;
-	char *ale[2];
-	int i;
-	struct stat buf;
+	char		*file;
+	char		*ale[2];
+	int			i;
+	struct stat	buf;
 
 	i = 0;
 	while (++i)
@@ -103,12 +103,12 @@ static char *get_file(void)
 	return (0);
 }
 
-void    read_heredoc(t_cmdito **cmd, char *del)
+void	read_heredoc(t_cmdito **cmd, char *del)
 {
-	const char  *delim;
-	char        *str;
-	char        *file;
-	int         fd;
+	const char	*delim;
+	char		*str;
+	char		*file;
+	int			fd;
 
 	delim = del;
 	file = get_file();

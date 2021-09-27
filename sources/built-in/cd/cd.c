@@ -6,15 +6,15 @@
 /*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:45 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 23:05:44 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:10 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static char *check_val(char *newval)
+static char	*check_val(char *newval)
 {
-	char *new;
+	char	*new;
 
 	if (!newval)
 		new = ft_strdup("");
@@ -78,8 +78,8 @@ int	ft_cd(char **args)
 		ft_error(errno, strerror(errno), 0);
 	else
 	{
-		msh_change_dir(&g_sh.listEnv, "OLDPWD", old_dir);
-		msh_change_dir(&g_sh.listEnv, "PWD", new_dir);
+		msh_change_dir(&g_sh.listenv, "OLDPWD", old_dir);
+		msh_change_dir(&g_sh.listenv, "PWD", new_dir);
 	}
 	return (0);
 }

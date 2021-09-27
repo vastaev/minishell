@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:15:16 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:15:18 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:03 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_exchild(t_cmdito *tmp, int fd[2], int old_fd[2])
 	{
 		signal(SIGINT, sig_fork);
 		signal(SIGQUIT, sig_fork);
-		execve(tmp->args[0], tmp->args, ft_list2array(g_sh.listEnv));
+		execve(tmp->args[0], tmp->args, ft_list2array(g_sh.listenv));
 	}
 }
 
@@ -54,7 +54,7 @@ void	ft_exparent(int fd[2], int old_fd[2], int i, int islast)
 
 void	ft_cmds(t_cmdito *tmp, int old_fd[2], int *i, int islast)
 {
-	int		fd[2];
+	int	fd[2];
 
 	if (ft_isbuiltin(tmp->args) && !g_sh.hasp)
 	{
@@ -83,8 +83,8 @@ void	ft_cmds(t_cmdito *tmp, int old_fd[2], int *i, int islast)
 
 static void	get_errno(int i)
 {
-	int		ex;
-	int		status;
+	int	ex;
+	int	status;
 
 	while (i-- > 0)
 	{

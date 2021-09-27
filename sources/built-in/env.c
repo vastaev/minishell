@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:51 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:29:10 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 02:07:07 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_env(void)
 	int	i;
 
 	i = 0;
-	while (g_sh.msEnvp[i] != NULL)
+	while (g_sh.msenvp[i] != NULL)
 	{
-		printf("%s\n", g_sh.msEnvp[i]);
+		printf("%s\n", g_sh.msenvp[i]);
 		i++;
 	}
 }

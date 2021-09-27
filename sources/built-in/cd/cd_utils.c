@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:32 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:33:56 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:08 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_value_ptr(char *toFind)
 {
 	t_env	*ptr;
 
-	ptr = g_sh.listEnv;
+	ptr = g_sh.listenv;
 	while (ptr)
 	{
 		if (ft_strcmp(ptr->name, toFind) == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:42 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:43:10 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/28 02:17:11 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sort_list(void)
 	while (did_swap)
 	{
 		did_swap = 0;
-		ptr = g_sh.listEnv;
+		ptr = g_sh.listenv;
 		while (ptr->next)
 		{
 			if (ft_strcmp(ptr->name, ptr->next->name) > 0)
@@ -55,7 +55,7 @@ t_env	*find_env_key(char *arg)
 	tmp_key = get_key(arg);
 	if (!tmp_key)
 		return (NULL);
-	ptr = g_sh.listEnv;
+	ptr = g_sh.listenv;
 	while (ptr)
 	{
 		if (ft_strcmp(ptr->name, tmp_key) == 0)

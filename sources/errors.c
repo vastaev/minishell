@@ -42,7 +42,8 @@ int	check_syn(const t_lexer *lex)
 		&& printf("%s%s\n", RED, CURLY_ERR))
 		return (0);
 	tmp = lex->tok;
-	if (!ft_strncmp(tmp->data, ";", 2) && printf("%s%s`%c'\n", RED, SYN_ERR, ';'))
+	if (!ft_strncmp(tmp->data, ";", 2)
+		&& printf("%s%s`%c'\n", RED, SYN_ERR, ';'))
 		return (0);
 	if ((tmp->tkn == '|' || tmp->tkn == '&' || tmp->tkn == ';')
 		&& printf("%s%s`%c'\n", RED, SYN_ERR, tmp->tkn))

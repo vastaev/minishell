@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:15:46 by uterese           #+#    #+#             */
-/*   Updated: 2021/09/27 12:15:47 by uterese          ###   ########.fr       */
+/*   Updated: 2021/09/28 01:24:58 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_fileexists(char *file)
 
 static void	free_bin(char **ar, char *f1, char *f2, char **ar2)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	if (ar)
