@@ -6,7 +6,7 @@
 /*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:45 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:27:26 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/27 17:07:03 by nephilister      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	update_env_value_field(char *arg, t_env *ptr)
 	if (ptr->value)
 		free(ptr->value);
 	ptr->value = get_value(arg);
+	ft_2d_array_free(g_sh.msEnvp);
+	g_sh.msEnvp = ft_list2array(g_sh.listEnv);
 }
 
 void	print_export(void)

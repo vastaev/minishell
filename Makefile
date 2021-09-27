@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: uterese <uterese@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/27 12:26:24 by uterese           #+#    #+#              #
-#    Updated: 2021/09/27 12:26:35 by uterese          ###   ########.fr        #
+#    Updated: 2021/09/27 17:38:50 by nephilister      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ OS = $(shell uname)
 LIBS = -lreadline
 
 ifeq ($(OS), Darwin)
+ 	# LIBS = -lreadline -L/opt/homebrew/opt/readline/lib
 	LIBS = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 	COMP = $(CC) $(CFLAGS) $(SRC) $(HEADER) $(RDLH) $(LIBS) -o $(NAME)
 	COMPO = $(CC) $(CFLAGS) -c $< $(HEADER) $(RDLH) -o $@
@@ -55,6 +56,7 @@ NOCOL		=	\033[0m
 HEADER	=	-I $I 
 
 RDLH = -I /Users/$(USER)/.brew/opt/readline/include
+# RDLH = -I /opt/homebrew/opt/readline/include
 
 FLAGS		=	-Wall -Wextra -Werror
 

@@ -6,7 +6,7 @@
 /*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:40 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:24:00 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/27 17:33:29 by nephilister      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ void	update_shlvl()
 	t_env	*ptr;
 	int		tmp;
 
+	ptr = find_env_key("OLDPWD");
+	if (ptr)
+	{
+		free(ptr->value);
+		ptr->value = NULL;
+	}
+	else
+		add_env_field("OLDPWD");
 	ptr = g_sh.listEnv;
 	while (ptr)
 	{
