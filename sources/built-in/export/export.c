@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/27 09:20:45 by nephilister       #+#    #+#             */
+/*   Updated: 2021/09/27 09:27:26 by nephilister      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini.h"
 
 int	input_validation(char *cmnd, char *arg)
@@ -8,19 +20,23 @@ int	input_validation(char *cmnd, char *arg)
 		return (ft_write_error_arg(cmnd, arg));
 	i = 0;
 	if (ft_strcmp(cmnd, "export") == 0)
+	{
 		while (arg[i] && arg[i] != '=')
 		{
 			if (!ok_chars(arg[i]) && !ft_isdigit(arg[i]))
 				return (ft_write_error_arg(cmnd, arg));
 			i++;
 		}
+	}
 	else
+	{
 		while (arg[i])
 		{
 			if ((!ok_chars(arg[i]) && !ft_isdigit(arg[i])) || arg[i] == '=')
 				return (ft_write_error_arg(cmnd, arg));
 			i++;
-		}	
+		}
+	}
 	return (0);
 }
 
@@ -28,11 +44,11 @@ void	add_env_field(char *arg)
 {
 	if (ft_strchr(arg, '=') == 0)
 		add_elem(&g_sh.listEnv,
-		new_env_elem(get_key(arg), NULL));
+			new_env_elem(get_key(arg), NULL));
 	else
 	{
 		add_elem(&g_sh.listEnv, new_env_elem(get_key(arg),
-		get_value(arg)));
+				get_value(arg)));
 		ft_2d_array_free(g_sh.msEnvp);
 		g_sh.msEnvp = ft_list2array(g_sh.listEnv);
 	}
@@ -47,7 +63,7 @@ void	update_env_value_field(char *arg, t_env *ptr)
 
 void	print_export(void)
 {
-	t_env 	*ptr;
+	t_env	*ptr;
 
 	ptr = g_sh.listEnv;
 	while (ptr)
@@ -60,10 +76,10 @@ void	print_export(void)
 	}
 }
 
-int	ft_export(t_cmdito  *cmnd)
+int	ft_export(t_cmdito *cmnd)
 {
 	int		i;
-	t_env	*foundPtr;
+	t_env	*found_ptr;
 
 	if (cmnd->n_ar == 1)
 		print_export();
@@ -74,11 +90,11 @@ int	ft_export(t_cmdito  *cmnd)
 		{
 			if (input_validation("export", cmnd->args[i]) == 0)
 			{
-				foundPtr = find_env_key(cmnd->args[i]);
-				if (foundPtr == NULL)
+				found_ptr = find_env_key(cmnd->args[i]);
+				if (found_ptr == NULL)
 					add_env_field(cmnd->args[i]);
 				else
-					update_env_value_field(cmnd->args[i], foundPtr);
+					update_env_value_field(cmnd->args[i], found_ptr);
 			}
 			i++;
 		}

@@ -17,6 +17,8 @@ char	*get_value(char *s)
 	if (s[i] != '=')
 		return (NULL);
 	value = ft_strdup(s + i + 1);
+	if (!value)
+		ft_error(-1, "Malloc error", 1);
 	return (value);
 }
 
@@ -50,6 +52,8 @@ void	init_shell(int arg, char *argv[], char *envp[])
     dup2(STDOUT_FILENO, g_sh.fd[1]);
 	arrLen = ft_2d_array_len(envp);
 	g_sh.msEnvp = malloc(sizeof(char *) * (arrLen + 1));
+	if (!g_sh.msEnvp)
+		ft_error(-1, "Malloc error", 1);
 	i = 0;
 	while (i < arrLen)
 	{

@@ -147,15 +147,16 @@ void	        ft_error(int errornum, char *errormsg, int bye);
 int				ft_print_errno(void);
 int				ft_write_error_arg(char *cmnd, char *arg);
 int				ft_write_cd_not_set(char *key);
+int				chdir_error(char *dir);
 // built-in -----------------------------------------------------------
 int				ft_pwd(void);
 void			ft_echo(char **tabs);
-void			ft_env();
+void			ft_env(void);
 int				ft_export(t_cmdito *cmnd);
 void			change_env_field(char *key, char *newValue);
 void			add_elem(t_env **lst, t_env *new);
 t_env			*new_env_elem(char *name, char *value);
-void			sort_list();
+void			sort_list(void);
 char			*get_value(char *s);
 char			*get_key(char *s);
 void			ft_exit(int a);
@@ -169,7 +170,6 @@ char			*get_value_ptr(char *toFind);
 int				ok_chars(char c);
 int				set_new(char *oldOrPresent);
 int				ft_keylen(char *arg);
-int				chdir_error(char *dir);
 // --------------------------------------------------------------------
 // freefun-------------------------------------------------------------
 void	        ft_freecmd(t_cmdito *cmd);

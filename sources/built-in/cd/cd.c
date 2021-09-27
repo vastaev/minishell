@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/27 09:20:36 by nephilister       #+#    #+#             */
+/*   Updated: 2021/09/27 09:30:42 by nephilister      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini.h"
 
 int	msh_change_dir(char *dir)
@@ -8,11 +20,13 @@ int	msh_change_dir(char *dir)
 	if (chdir(dir) == -1)
 		return (chdir_error(dir));
 	tmp = ft_strjoin("OLDPWD=", get_value_ptr("PWD"));
+	if (!tmp)
+		ft_error(-1, "Malloc error", 1);
 	ptr = find_env_key("OLDPWD");
 	update_env_value_field(tmp, ptr);
 	free(tmp);
 	if (set_new("PWD=") == 1)
-		return(1);
+		return (1);
 	return (0);
 }
 
@@ -24,7 +38,7 @@ int	cd_to(char *key)
 	if (ptr == NULL)
 		return (ft_write_cd_not_set(key));
 	msh_change_dir(ptr->value);
-	return (0);	
+	return (0);
 }
 
 int	where_to_cd(t_cmdito *cmnd)

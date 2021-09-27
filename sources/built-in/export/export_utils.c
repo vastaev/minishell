@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/27 09:20:42 by nephilister       #+#    #+#             */
+/*   Updated: 2021/09/27 09:43:10 by nephilister      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini.h"
-#include <string.h>
 
 void	data_swap(t_env *ptr, t_env *ptr2, t_env *tmp)
 {
@@ -11,24 +22,24 @@ void	data_swap(t_env *ptr, t_env *ptr2, t_env *tmp)
 	ptr2->value = tmp->value;
 }
 
-void	sort_list()
+void	sort_list(void)
 {
-	int	didSwap;
-	t_env *ptr;
-	t_env *tmp;
+	int		did_swap;
+	t_env	*ptr;
+	t_env	*tmp;
 
 	tmp = malloc(sizeof(t_env));
-	didSwap = 1;
-	while (didSwap)
+	did_swap = 1;
+	while (did_swap)
 	{
-		didSwap = 0;
+		did_swap = 0;
 		ptr = g_sh.listEnv;
 		while (ptr->next)
 		{
 			if (ft_strcmp(ptr->name, ptr->next->name) > 0)
 			{
 				data_swap(ptr, ptr->next, tmp);
-				didSwap = 1;
+				did_swap = 1;
 			}
 			ptr = ptr->next;
 		}
@@ -39,22 +50,22 @@ void	sort_list()
 t_env	*find_env_key(char *arg)
 {
 	t_env	*ptr;
-	char	*tmpKey;
+	char	*tmp_key;
 
-	tmpKey = get_key(arg);
-	if (!tmpKey)
+	tmp_key = get_key(arg);
+	if (!tmp_key)
 		return (NULL);
 	ptr = g_sh.listEnv;
 	while (ptr)
 	{
-		if (ft_strcmp(ptr->name, tmpKey) == 0)
+		if (ft_strcmp(ptr->name, tmp_key) == 0)
 		{
-			free(tmpKey);
+			free(tmp_key);
 			return (ptr);
 		}
 		ptr = ptr->next;
 	}
-	free(tmpKey);
+	free(tmp_key);
 	return (NULL);
 }
 

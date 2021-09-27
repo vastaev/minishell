@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/27 09:20:32 by nephilister       #+#    #+#             */
+/*   Updated: 2021/09/27 09:33:56 by nephilister      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini.h"
 
 char	*get_value_ptr(char *toFind)
@@ -18,16 +30,16 @@ int	set_new(char *oldOrPresent)
 {
 	char	tmp[2048];
 	char	*pwd;
-	char	*newPwd;
+	char	*new_pwd;
 	t_env	*ptr;
 
 	pwd = getcwd(tmp, 2048);
 	if (!pwd)
 		return (ft_print_errno());
-	newPwd = ft_strjoin(oldOrPresent, pwd);
-	ptr = find_env_key(newPwd);
-	update_env_value_field(newPwd, ptr);
-	free(newPwd);
+	new_pwd = ft_strjoin(oldOrPresent, pwd);
+	ptr = find_env_key(new_pwd);
+	update_env_value_field(new_pwd, ptr);
+	free(new_pwd);
 	return (0);
 }
 
