@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nephilister <nephilister@student.42.fr>    +#+  +:+       +#+        */
+/*   By: uterese <and nephilister>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:20:45 by nephilister       #+#    #+#             */
-/*   Updated: 2021/09/27 09:27:26 by nephilister      ###   ########.fr       */
+/*   Updated: 2021/09/27 23:05:44 by uterese          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+static char *check_val(char *newval)
+{
+	char *new;
+
+	if (!newval)
+		new = ft_strdup("");
+	else
+		new = ft_strdup(newval);
+	return (new);
+}
 
 static int	msh_change_dir(t_env **env, char *dir, char *new)
 {
@@ -21,6 +32,7 @@ static int	msh_change_dir(t_env **env, char *dir, char *new)
 	{
 		if (!ft_strcmp(ptr->name, dir))
 		{
+			new = check_val(new);
 			if (ptr->value)
 				free(ptr->value);
 			ptr->value = ft_strdup(new);
