@@ -1,25 +1,22 @@
 #include "mini.h"
 
-t_env	*delete_from_list(t_env **lst, char *arg)
+t_env	*delete_from_list(t_env **lst, t_env *ptr)
 {
 	t_env	*elem;
 	t_env	*curr;
-	char	*tmp;
 
 	elem = NULL;
 	curr = *lst;
-	tmp = get_key(arg);
-	if (curr && ft_strcmp(curr->name, tmp) == 0)
+	if (curr && curr == ptr)
 	{
 		elem = curr;
 		*lst = elem->next;
 		elem->next = NULL;
-		free(tmp);
 		return (elem);
 	}
 	while (curr->next)
 	{
-		if (ft_strcmp(curr->next->name, tmp) == 0)
+		if (curr->next == ptr)
 		{
 			elem = curr->next;
 			curr->next = curr->next->next;
@@ -27,8 +24,7 @@ t_env	*delete_from_list(t_env **lst, char *arg)
 			break ;
 		}
 		curr = curr->next;
-	}
-	free(tmp);
+	}	
 	return (elem);
 }
 
@@ -46,7 +42,7 @@ int	ft_unset(t_cmdito *cmnd)
 		ptr = find_env_key(cmnd->args[i]);
 		if (!input_validation("unset", cmnd->args[i]) && ptr)
 		{
-			tmp = delete_from_list(&g_sh.listEnv, cmnd->args[i]);
+			tmp = delete_from_list(&g_sh.listEnv, ptr);
 			free(tmp->name);
 			if (tmp->value)
 				free(tmp->value);
