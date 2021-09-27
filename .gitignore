@@ -1,3 +1,5 @@
 .vscode
 objects
 minishell
+minishell.dSYM
+Makefile

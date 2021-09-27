@@ -13,9 +13,7 @@ char	*get_value(char *s)
 	char	*value;
 	int		i;
 
-	i = 0;
-	while (s[i] != '=')
-		i++;
+	i = ft_keylen(s);
 	if (s[i] != '=')
 		return (NULL);
 	value = ft_strdup(s + i + 1);
@@ -51,7 +49,7 @@ void	init_shell(int arg, char *argv[], char *envp[])
 	dup2(STDIN_FILENO, g_sh.fd[0]);
     dup2(STDOUT_FILENO, g_sh.fd[1]);
 	arrLen = ft_2d_array_len(envp);
-	g_sh.msEnvp = malloc(sizeof(char *) * arrLen);
+	g_sh.msEnvp = malloc(sizeof(char *) * (arrLen + 1));
 	i = 0;
 	while (i < arrLen)
 	{
