@@ -60,6 +60,8 @@ void	init_shell(int arg, char *argv[], char *envp[])
 
 	(void) arg;
 	(void) argv;
+	if (*envp == 0)
+		ft_error(127, "Error: envp not found!", 1);
 	dup2(STDIN_FILENO, g_sh.fd[0]);
     dup2(STDOUT_FILENO, g_sh.fd[1]);
 	arrLen = ft_2d_array_len(envp);
